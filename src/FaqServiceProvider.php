@@ -15,15 +15,15 @@ class FaqServiceProvider extends ServiceProvider
     {
         require __DIR__ . '/routes/web.php';
 
-        /*$this->loadViewsFrom(__DIR__.'/resources/views', 'faq');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'faq');
 
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'faq');
 
         $this->publishes([
             __DIR__.'/resources/assets' => public_path('packages/faq'),
-        ], 'price');
+        ], 'faq');
 
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');*/
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 
     /**
@@ -34,6 +34,10 @@ class FaqServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->make('Ourgarage\Faq\Http\Controllers\Admin\FaqController');
+
+        $this->app->make('Ourgarage\Faq\Http\Controllers\Admin\FaqCategoryController');
+
+        $this->app->make('Ourgarage\Faq\Http\Controllers\Admin\FaqQAController');
 
         $this->mergeConfigFrom(__DIR__.'/config/faq.php', 'packages');
     }
