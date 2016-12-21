@@ -8,10 +8,8 @@ return [
     ],
 
     'category' => [
-
         'title' => 'FAQ - All categories',
         'no-categories' => 'You have no categories',
-        'must-category' => 'First, you must create at least one category',
         'add' => 'Create category',
         'edit' => 'Edit category',
 
@@ -27,6 +25,14 @@ return [
             'created' => 'Date created',
             'options' => 'Options'
         ]
+    ],
+
+    'qa' => [
+        'title' => 'All questions and answers',
+        'no-qa' => 'You have no questions-answers',
+        'must-category' => 'First, you must create at least one category',
+        'add' => 'Create question-answer',
+        'edit' => 'Edit question-answer',
     ],
 
     'button' => [

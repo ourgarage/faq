@@ -24,6 +24,8 @@ class FaqServiceProvider extends ServiceProvider
         ], 'faq');
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
+        view()->composer('faq::admin.qa.qa', \Ourgarage\Faq\Http\ViewComposers\FaqCategoriesComposer::class);
     }
 
     /**

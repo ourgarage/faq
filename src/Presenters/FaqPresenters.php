@@ -4,6 +4,7 @@ namespace Ourgarage\Faq\Presenters;
 
 use Illuminate\Database\QueryException;
 use Ourgarage\Faq\Models\Category;
+use Ourgarage\Faq\Models\QuestionAnswer;
 
 class FaqPresenters
 {
@@ -14,7 +15,7 @@ class FaqPresenters
      */
     public function getAllCategories()
     {
-        return Category::paginate(20);
+        return Category::all();
     }
 
     /**
@@ -91,6 +92,11 @@ class FaqPresenters
         } catch (QueryException $e) {
             return true;
         }
+    }
+
+    public function getAllQuestionsAnswers()
+    {
+        return QuestionAnswer::paginate(20);
     }
 
 }
