@@ -12,7 +12,7 @@ class Category extends Model
     protected $table = 'faq_categories';
 
     protected $fillable = [
-        'status', 'title', 'slug', 'meta_keywords', 'meta_description', 'meta_title'
+        'status', 'title', 'slug'
     ];
 
     public function questionsAnswers()
