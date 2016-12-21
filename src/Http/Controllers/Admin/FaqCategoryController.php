@@ -63,6 +63,7 @@ class FaqCategoryController extends Controller
     /**
      * View form for edit category
      *
+     * @param FaqPresenters $presenter
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
