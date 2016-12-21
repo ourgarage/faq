@@ -16,7 +16,7 @@ class CreateFaqQuestionsAnswersTable extends Migration
     {
         Schema::create('faq_questions_answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('faq_categories_id');
+            $table->integer('faq_categories_id')->unsigned();
             $table->string('status')->default(QuestionAnswer::STATUS_ACTIVE)->index();
             $table->string('title')->unique();
             $table->string('slug')->unique();
