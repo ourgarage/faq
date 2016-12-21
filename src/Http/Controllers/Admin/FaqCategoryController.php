@@ -5,7 +5,7 @@ namespace Ourgarage\Faq\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Notifications;
 use Ourgarage\Faq\Http\Requests\FaqCategoryRequest;
-use Ourgarage\Faq\Presenters\FaqPresenters;
+use Ourgarage\Faq\Presenters\FaqPresenter;
 
 class FaqCategoryController extends Controller
 {
@@ -13,10 +13,10 @@ class FaqCategoryController extends Controller
     /**
      * List all categories of FAQ
      *
-     * @param FaqPresenters $presenter
+     * @param FaqPresenter $presenter
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(FaqPresenters $presenter)
+    public function index(FaqPresenter $presenter)
     {
         $categories = $presenter->getAllCategories();
 
@@ -43,17 +43,11 @@ class FaqCategoryController extends Controller
      * Save created category in database
      *
      * @param FaqCategoryRequest $request
-     * @param FaqPresenters $presenter
+     * @param FaqPresenter $presenter
      */
-    public function store(FaqCategoryRequest $request, FaqPresenters $presenter)
+    public function store(FaqCategoryRequest $request, FaqPresenter $presenter, $id = null)
     {
-        $err = $presenter->createCategory($request);
-
-        if ($err) {
-            Notifications::error(trans('faq::faq.notifications.error.category.create'), 'top');
-
-            return redirect()->back()->withInput();
-        }
+        $presenter->createOrUpdateCategory($request, $id);
 
         Notifications::success(trans('faq::faq.notifications.success.category.create'), 'top');
 
@@ -63,11 +57,12 @@ class FaqCategoryController extends Controller
     /**
      * View form for edit category
      *
-     * @param FaqPresenters $presenter
+     * @param FaqPresenter $presenter
      * @param $id
+     * @type int
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(FaqPresenters $presenter, $id)
+    public function edit(FaqPresenter $presenter, $id)
     {
         $category = $presenter->getByCategory($id);
 
@@ -78,44 +73,15 @@ class FaqCategoryController extends Controller
     }
 
     /**
-     * Save change in database
-     *
-     * @param FaqCategoryRequest $request
-     * @param FaqPresenters $presenter
-     * @param $id
-     * @return $this|\Illuminate\Http\RedirectResponse
-     */
-    public function update(FaqCategoryRequest $request, FaqPresenters $presenter, $id)
-    {
-        $err = $presenter->updateCategory($request, $id);
-
-        if ($err) {
-            Notifications::error(trans('faq::faq.notifications.error.category.update'), 'top');
-
-            return redirect()->back()->withInput();
-        }
-
-        Notifications::success(trans('faq::faq.notifications.success.category.update'), 'top');
-
-        return redirect()->route('faq::admin::categories::index');
-    }
-
-    /**
      * Change status of category
      *
-     * @param FaqPresenters $presenter
+     * @param FaqPresenter $presenter
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function status(FaqPresenters $presenter, $id)
+    public function status(FaqPresenter $presenter, $id)
     {
-        $err = $presenter->updateStatusCategory($id);
-
-        if ($err) {
-            Notifications::error(trans('faq::faq.notifications.error.category.status'), 'top');
-
-            return redirect()->route('faq::admin::categories::index');
-        }
+        $presenter->updateStatusCategory($id);
 
         Notifications::success(trans('faq::faq.notifications.success.category.status'), 'top');
 
@@ -125,19 +91,13 @@ class FaqCategoryController extends Controller
     /**
      * Delete category from database
      *
-     * @param FaqPresenters $presenter
+     * @param FaqPresenter $presenter
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(FaqPresenters $presenter, $id)
+    public function destroy(FaqPresenter $presenter, $id)
     {
-        $err = $presenter->destroyCategory($id);
-
-        if ($err) {
-            Notifications::error(trans('faq::faq.notifications.error.category.delete'), 'top');
-
-            return redirect()->route('faq::admin::categories::index');
-        }
+        $presenter->deleteCategory($id);
 
         Notifications::success(trans('faq::faq.notifications.success.category.delete'), 'top');
 

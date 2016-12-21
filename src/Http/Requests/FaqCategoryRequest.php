@@ -24,10 +24,9 @@ class FaqCategoryRequest extends FormRequest
      *
      * @return array
      */
-
     public function rules()
     {
-        $rules = [
+        return [
             'title' => [
                 'required',
                 Rule::unique('faq_categories')->ignore($this->route('id')),
@@ -37,11 +36,9 @@ class FaqCategoryRequest extends FormRequest
                 Rule::unique('faq_categories')->ignore($this->route('id')),
             ],
         ];
-
-        return $rules;
     }
 
-    public function response(Array $errors)
+    public function response(array $errors)
     {
         return redirect()->back()->withInput();
     }

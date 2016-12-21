@@ -33,11 +33,11 @@ class FaqServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Ourgarage\Faq\Http\Controllers\Admin\FaqController');
+        $this->app->make(Http\Controllers\Admin\FaqController::class);
 
-        $this->app->make('Ourgarage\Faq\Http\Controllers\Admin\FaqCategoryController');
+        $this->app->make(Http\Controllers\Admin\FaqCategoryController::class);
 
-        $this->app->make('Ourgarage\Faq\Http\Controllers\Admin\FaqQAController');
+        $this->app->make(Http\Controllers\Admin\FaqQAController::class);
 
         $this->mergeConfigFrom(__DIR__.'/config/faq.php', 'packages');
     }

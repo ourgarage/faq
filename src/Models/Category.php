@@ -17,6 +17,6 @@ class Category extends Model
 
     public function questionsAnswers()
     {
-        return $this->hasMany('Ourgarage\Fag\Models\QuestionAnswer');
+        return $this->hasMany('Ourgarage\Faq\Models\QuestionAnswer');
     }
 }

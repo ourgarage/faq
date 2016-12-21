@@ -18,7 +18,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/create', 'FaqCategoryController@create')->name('faq::admin::categories::create');
             Route::post('/store', 'FaqCategoryController@store')->name('faq::admin::categories::store');
             Route::get('/{id}', 'FaqCategoryController@edit')->name('faq::admin::categories::edit');
-            Route::put('/{id}', 'FaqCategoryController@update')->name('faq::admin::categories::update');
+            Route::put('/store/{id}', 'FaqCategoryController@store')->name('faq::admin::categories::update');
             Route::post('/status/{id}', 'FaqCategoryController@status')->name('faq::admin::categories::status');
             Route::delete('/{id}', 'FaqCategoryController@destroy')->name('faq::admin::categories::destroy');
         });

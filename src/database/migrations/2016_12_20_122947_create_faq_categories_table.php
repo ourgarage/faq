@@ -18,7 +18,7 @@ class CreateFaqCategoriesTable extends Migration
             $table->increments('id');
             $table->string('status')->default(Category::STATUS_ACTIVE)->index();
             $table->string('title')->unique();
-            $table->string('slug')->unique()->index();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
