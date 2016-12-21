@@ -88,7 +88,3 @@
 @section('css')
     <link href="/packages/faq/css/faq.css" rel="stylesheet" type="text/css">
 @endsection
-
-@section('js')
-    <script src="/packages/faq/js/popup.js"></script>
-@endsection
