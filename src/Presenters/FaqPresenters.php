@@ -35,6 +35,11 @@ class FaqPresenters
         }
     }
 
+    public function getByCategory($id)
+    {
+        return Category::findOrFail($id);
+    }
+
     /**
      * Update category of FAQ
      *

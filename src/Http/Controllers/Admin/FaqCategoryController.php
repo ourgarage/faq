@@ -5,7 +5,6 @@ namespace Ourgarage\Faq\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Notifications;
 use Ourgarage\Faq\Http\Requests\FaqCategoryRequest;
-use Ourgarage\Faq\Models\Category;
 use Ourgarage\Faq\Presenters\FaqPresenters;
 
 class FaqCategoryController extends Controller
@@ -67,9 +66,9 @@ class FaqCategoryController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(FaqPresenters $presenter, $id)
     {
-        $category = Category::findOrFail($id);
+        $category = $presenter->getByCategory($id);
 
         \Title::prepend(trans('dashboard.title.prepend'));
         \Title::append(trans('faq::faq.category.edit'));
