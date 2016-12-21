@@ -15,4 +15,8 @@ class Category extends Model
         'status', 'title', 'slug', 'meta_keywords', 'meta_description', 'meta_title'
     ];
 
+    public function questionsAnswers()
+    {
+        return $this->hasMany('Ourgarage\Fag\Models\QuestionAnswer');
+    }
 }
