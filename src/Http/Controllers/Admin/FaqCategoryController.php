@@ -60,7 +60,7 @@ class FaqCategoryController extends Controller
      * View form for edit category
      *
      * @param FaqPresenter $presenter
-     * @param integer $id
+     * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(FaqPresenter $presenter, $id)
@@ -77,7 +77,7 @@ class FaqCategoryController extends Controller
      * Change status of category
      *
      * @param FaqPresenter $presenter
-     * @param integer $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function status(FaqPresenter $presenter, $id)
@@ -93,7 +93,7 @@ class FaqCategoryController extends Controller
      * Delete category from database
      *
      * @param FaqPresenter $presenter
-     * @param integer $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(FaqPresenter $presenter, $id)
