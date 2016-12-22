@@ -8,7 +8,7 @@ class Category extends Model
 {
     const STATUS_ACTIVE = 1;
     const STATUS_DISABLED = 0;
-    const DEFAULT_PAGINATE = 20;
+    const PER_PAGE = 20;
 
     protected $table = 'faq_categories';
 

@@ -14,7 +14,7 @@ class FaqPresenter
      */
     public function getAllCategories()
     {
-        return Category::paginate(Category::DEFAULT_PAGINATE);
+        return Category::paginate(Category::PER_PAGE);
     }
 
     /**
