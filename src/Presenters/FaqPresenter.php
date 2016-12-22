@@ -13,7 +13,7 @@ class FaqPresenter
      */
     public function getAllCategories()
     {
-        return Category::paginate(20);
+        return Category::paginate(Category::DEFAULT_PAGINATE);
     }
 
     /**
