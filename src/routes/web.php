@@ -31,7 +31,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/create', 'FaqQAController@create')->name('faq::admin::qa::create');
             Route::post('/store', 'FaqQAController@store')->name('faq::admin::qa::store');
             Route::get('/{id}', 'FaqQAController@edit')->name('faq::admin::qa::edit');
-            Route::put('/{id}', 'FaqQAController@update')->name('faq::admin::qa::update');
+            Route::put('/store/{id}', 'FaqQAController@store')->name('faq::admin::qa::update');
             Route::post('/status/{id}', 'FaqQAController@status')->name('faq::admin::qa::status');
             Route::delete('/{id}', 'FaqQAController@destroy')->name('faq::admin::qa::destroy');
         });

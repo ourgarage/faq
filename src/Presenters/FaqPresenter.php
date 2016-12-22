@@ -75,9 +75,28 @@ class FaqPresenter
         return true;
     }
 
+    /**
+     * Get all questions-answers
+     *
+     * @return object
+     */
     public function getAllQuestionsAnswers()
     {
         return QuestionAnswer::paginate(QuestionAnswer::DEFAULT_PAGINATE);
+    }
+
+    public function createOrUpdateQuestionAnswer($data, $id)
+    {
+        $questionAnswer = QuestionAnswer::findOrNew($id);
+
+        $questionAnswer->faq_categories_id = $data->category;
+        $questionAnswer->title = $data->title;
+        $questionAnswer->slug = $data->slug;
+        $questionAnswer->question = $data->question;
+        $questionAnswer->answer = $data->answer;
+        $questionAnswer->save();
+
+        return true;
     }
 
 }

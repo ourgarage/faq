@@ -33,6 +33,19 @@ return [
         'must-category' => 'First, you must create at least one category',
         'add' => 'Create question-answer',
         'edit' => 'Edit question-answer',
+
+        'popup' => [
+            'activate' => 'Do you want to activate this question-answer?',
+            'deactivate' => 'Do you want to deactivate this question-answer?',
+            'delete' => 'Do you want to delete this question-answer?'
+        ],
+
+        'table' => [
+            'uri' => 'URI',
+            'title' => 'Title',
+            'created' => 'Date created',
+            'options' => 'Options'
+        ]
     ],
 
     'button' => [
