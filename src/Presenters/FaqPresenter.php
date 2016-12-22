@@ -2,6 +2,7 @@
 
 namespace Ourgarage\Faq\Presenters;
 
+use Illuminate\Database\Eloquent\Collection;
 use Ourgarage\Faq\Models\Category;
 
 class FaqPresenter
