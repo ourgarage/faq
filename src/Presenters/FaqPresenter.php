@@ -9,7 +9,7 @@ class FaqPresenter
     /**
      * Get all categories of FAQ
      *
-     * @return object
+     * @return Collection|Category[]
      */
     public function getAllCategories()
     {
@@ -19,8 +19,8 @@ class FaqPresenter
     /**
      * Create or update category of FAQ
      *
-     * @param array $data
-     * @param integer $id
+     * @param object $data
+     * @param int $id
      * @return bool
      */
     public function createOrUpdateCategory($data, $id)
@@ -37,7 +37,7 @@ class FaqPresenter
     /**
      * Get selected category
      *
-     * @param integer $id
+     * @param int $id
      * @return object
      */
     public function getByCategory($id)
@@ -48,7 +48,7 @@ class FaqPresenter
     /**
      * Update category status
      *
-     * @param integer $id
+     * @param int $id
      * @return bool
      */
     public function updateStatusCategory($id)
@@ -64,7 +64,7 @@ class FaqPresenter
     /**
      * Delete category of FAQ
      *
-     * @param integer $id
+     * @param int $id
      * @return bool
      */
     public function deleteCategory($id)

@@ -44,7 +44,7 @@ class FaqCategoryController extends Controller
      *
      * @param FaqCategoryRequest $request
      * @param FaqPresenter $presenter
-     * @param null|integer $id
+     * @param null|int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(FaqCategoryRequest $request, FaqPresenter $presenter, $id = null)
