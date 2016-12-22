@@ -3,6 +3,7 @@
 namespace Ourgarage\Faq\Presenters;
 
 use Ourgarage\Faq\Models\Category;
+use Ourgarage\Faq\Models\QuestionAnswer;
 
 class FaqPresenter
 {
@@ -72,6 +73,11 @@ class FaqPresenter
         Category::destroy($id);
 
         return true;
+    }
+
+    public function getAllQuestionsAnswers()
+    {
+        return QuestionAnswer::paginate(QuestionAnswer::DEFAULT_PAGINATE);
     }
 
 }

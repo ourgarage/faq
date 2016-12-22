@@ -10,6 +10,8 @@ class FaqQAController extends Controller
 {
     public function index(FaqPresenter $presenter)
     {
+        $questionsAnswers = $presenter->getAllQuestionsAnswers();
 
+        return view('faq::admin.qa.');
     }
 }
