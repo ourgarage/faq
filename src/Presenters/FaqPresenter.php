@@ -2,7 +2,6 @@
 
 namespace Ourgarage\Faq\Presenters;
 
-use Illuminate\Database\QueryException;
 use Ourgarage\Faq\Models\Category;
 
 class FaqPresenter
@@ -10,7 +9,7 @@ class FaqPresenter
     /**
      * Get all categories of FAQ
      *
-     * @return array
+     * @return object
      */
     public function getAllCategories()
     {
@@ -20,10 +19,8 @@ class FaqPresenter
     /**
      * Create or update category of FAQ
      *
-     * @param $data
-     * @type array
-     * @param $id
-     * @type int
+     * @param array $data
+     * @param integer $id
      * @return bool
      */
     public function createOrUpdateCategory($data, $id)
@@ -37,6 +34,12 @@ class FaqPresenter
         return true;
     }
 
+    /**
+     * Get selected category
+     *
+     * @param integer $id
+     * @return object
+     */
     public function getByCategory($id)
     {
         return Category::findOrFail($id);
@@ -45,7 +48,7 @@ class FaqPresenter
     /**
      * Update category status
      *
-     * @param $id
+     * @param integer $id
      * @return bool
      */
     public function updateStatusCategory($id)
@@ -61,8 +64,7 @@ class FaqPresenter
     /**
      * Delete category of FAQ
      *
-     * @param $id
-     * @type int
+     * @param integer $id
      * @return bool
      */
     public function deleteCategory($id)
