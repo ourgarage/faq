@@ -44,7 +44,9 @@ return [
             'uri' => 'URI',
             'title' => 'Title',
             'created' => 'Date created',
-            'options' => 'Options'
+            'options' => 'Options',
+            'category' => 'Category',
+            'select-category' => 'Select category'
         ]
     ],
 

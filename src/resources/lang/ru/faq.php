@@ -44,7 +44,9 @@ return [
             'uri' => 'URI',
             'title' => 'Название',
             'created' => 'Дата создания',
-            'options' => 'Опции'
+            'options' => 'Опции',
+            'category' => 'Категория',
+            'select-category' => 'Выберите категорию'
         ]
     ],
 

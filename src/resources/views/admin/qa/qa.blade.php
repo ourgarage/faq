@@ -14,8 +14,8 @@
             <div class="faq-box-body">
                 <form class="form-horizontal"
                       action="{{ isset($questionAnswer)
-                  ? route('faq::admin::categories::update', ['id' => $questionAnswer->id])
-                  : route('faq::admin::categories::store') }}" method="POST">
+                  ? route('faq::admin::qa::update', ['id' => $questionAnswer->id])
+                  : route('faq::admin::qa::store') }}" method="POST">
 
                     @if(isset($questionAnswer))
                         {{ method_field('PUT') }}
@@ -24,7 +24,7 @@
                     {!! csrf_field() !!}
 
                     <div class="form-group has-feedback">
-                        <label class="col-md-2">{{ trans('faq::faq.category.table.title') }} : *</label>
+                        <label class="col-md-2">{{ trans('faq::faq.qa.table.title') }} : *</label>
                         <div class="col-md-8">
                             <input type="text" name="title" class="form-control"
                                    value="{{ isset($questionAnswer) ? old('title', $questionAnswer->title) : old('title') }}">
@@ -33,11 +33,23 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <label class="col-md-2">{{ trans('faq::faq.category.table.uri') }} : *</label>
+                        <label class="col-md-2">{{ trans('faq::faq.qa.table.uri') }} : *</label>
                         <div class="col-md-8">
                             <input type="text" name="slug" class="form-control"
                                    value="{{ isset($questionAnswer) ? old('slug', $questionAnswer->slug) : old('slug') }}">
                             <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label class="col-md-2">{{ trans('faq::faq.qa.table.category') }} : *</label>
+                        <div class="col-md-8">
+                            <select name="category" class="form-control">
+                                <option value="">{{ trans('faq::faq.qa.table.select-category') }}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
