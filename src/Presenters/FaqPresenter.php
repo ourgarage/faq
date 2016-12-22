@@ -4,6 +4,7 @@ namespace Ourgarage\Faq\Presenters;
 
 use Illuminate\Database\Eloquent\Collection;
 use Ourgarage\Faq\Models\Category;
+use Request;
 
 class FaqPresenter
 {
@@ -20,7 +21,7 @@ class FaqPresenter
     /**
      * Create or update category of FAQ
      *
-     * @param object $data
+     * @param Request|$data
      * @param int $id
      * @return bool
      */
