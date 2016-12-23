@@ -46,7 +46,9 @@ return [
             'created' => 'Date created',
             'options' => 'Options',
             'category' => 'Category',
-            'select-category' => 'Select category'
+            'select-category' => 'Select category',
+            'question' => 'Question',
+            'answer' => 'Answer'
         ]
     ],
 
@@ -75,6 +77,13 @@ return [
                 'update' => 'Category of FAQ has been successfully updated',
                 'delete' => 'Category of FAQ has been successfully deleted',
                 'status' => 'Status of category has been successfully changed'
+            ],
+
+            'qa' => [
+                'create' => 'Question-answer has been successfully created',
+                'update' => 'Question-answer has been successfully updated',
+                'delete' => 'Question-answer has been successfully deleted',
+                'status' => 'Status of question-answer has been successfully changed'
             ]
         ]
     ]

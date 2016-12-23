@@ -4,6 +4,7 @@ namespace Ourgarage\Faq\Presenters;
 
 use Illuminate\Database\Eloquent\Collection;
 use Ourgarage\Faq\DTO\FaqCategoryDTO;
+use Ourgarage\Faq\DTO\FaqQuestionAnswerDTO;
 use Ourgarage\Faq\Models\Category;
 use Ourgarage\Faq\Models\QuestionAnswer;
 
@@ -87,18 +88,51 @@ class FaqPresenter
         return QuestionAnswer::paginate(QuestionAnswer::DEFAULT_PAGINATE);
     }
 
-    public function createOrUpdateQuestionAnswer($data, $id)
+    /**
+     * Create or update question-answer
+     *
+     * @param FaqQuestionAnswerDTO $dto
+     * @param int $id
+     * @return bool
+     */
+    public function createOrUpdateQuestionAnswer(FaqQuestionAnswerDTO $dto, $id)
     {
         $questionAnswer = QuestionAnswer::findOrNew($id);
 
-        $questionAnswer->faq_categories_id = $data->category;
-        $questionAnswer->title = $data->title;
-        $questionAnswer->slug = $data->slug;
-        $questionAnswer->question = $data->question;
-        $questionAnswer->answer = $data->answer;
+        $questionAnswer->faq_category_id = $dto->getCategory();
+        $questionAnswer->title = $dto->getTitle();
+        $questionAnswer->slug = $dto->getSlug();
+        $questionAnswer->question = $dto->getQuestion();
+        $questionAnswer->answer = $dto->getAnswer();
         $questionAnswer->save();
 
         return true;
     }
 
+    /**
+     * Get selected question-answer
+     *
+     * @param int $id
+     * @return object
+     */
+    public function getByQuestionAnswer($id)
+    {
+        return QuestionAnswer::findOrFail($id);
+    }
+
+    /**
+     * Update question-answer status
+     *
+     * @param int $id
+     * @return bool
+     */
+    public function updateStatusQuestionAnswer($id)
+    {
+        $questionAnswer = QuestionAnswer::findOrFail($id);
+
+        $questionAnswer->status = $questionAnswer->status == QuestionAnswer::STATUS_ACTIVE ? QuestionAnswer::STATUS_DISABLED : QuestionAnswer::STATUS_ACTIVE;
+        $questionAnswer->save();
+
+        return true;
+    }
 }

@@ -13,6 +13,6 @@ class QuestionAnswer extends Model
     protected $table = 'faq_questions_answers';
 
     protected $fillable = [
-        'status', 'title', 'slug', 'question', 'answer'
+        'faq_category_id', 'status', 'title', 'slug', 'question', 'answer'
     ];
 }

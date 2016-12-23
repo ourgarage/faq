@@ -46,7 +46,9 @@ return [
             'created' => 'Дата создания',
             'options' => 'Опции',
             'category' => 'Категория',
-            'select-category' => 'Выберите категорию'
+            'select-category' => 'Выберите категорию',
+            'question' => 'Вопрос',
+            'answer' => 'Ответ'
         ]
     ],
 

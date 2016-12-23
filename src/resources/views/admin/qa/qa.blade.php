@@ -14,7 +14,7 @@
             <div class="faq-box-body">
                 <form class="form-horizontal"
                       action="{{ isset($questionAnswer)
-                  ? route('faq::admin::qa::update', ['id' => $questionAnswer->id])
+                  ? route('faq::admin::qa::store', ['id' => $questionAnswer->id])
                   : route('faq::admin::qa::store') }}" method="POST">
 
                     @if(isset($questionAnswer))
@@ -47,9 +47,37 @@
                             <select name="category" class="form-control">
                                 <option value="">{{ trans('faq::faq.qa.table.select-category') }}</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    @if(isset($questionAnswer))
+                                        <option value="{{ $category->id }}"
+                                                {{ old('category', $questionAnswer->faq_category_id) == $category->id ? 'selected' : ''}}>
+                                            {{ $category->title }}
+                                        </option>
+                                    @else
+                                        <option value="{{ $category->id }}"
+                                                {{ old('category') == $category->id ? 'selected' : ''}}>
+                                            {{ $category->title }}
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label class="col-md-2">{{ trans('faq::faq.qa.table.question') }} : *</label>
+                        <div class="col-md-8">
+                            <textarea name="question" class="form-control">
+                                {{ isset($questionAnswer) ? old('question', $questionAnswer->question) : old('question') }}
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <label class="col-md-2">{{ trans('faq::faq.qa.table.answer') }} : *</label>
+                        <div class="col-md-8">
+                            <textarea name="answer" class="form-control">
+                                {{ isset($questionAnswer) ? old('answer', $questionAnswer->answer) : old('answer') }}
+                            </textarea>
                         </div>
                     </div>
 
@@ -60,7 +88,6 @@
                 </form>
 
             </div>
-
         @else
             <div class="no-results text-center">
                 <i class="fa fa-exclamation-triangle fa-3x"></i>
@@ -77,4 +104,3 @@
 @section('css')
     <link href='/packages/faq/css/faq.css' rel='stylesheet' type='text/css'>
 @endsection
-
