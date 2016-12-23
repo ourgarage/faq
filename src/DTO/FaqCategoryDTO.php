@@ -5,6 +5,11 @@ namespace Ourgarage\Faq\DTO;
 class FaqCategoryDTO
 {
     /**
+     * @var int
+     */
+    private $category_id;
+
+    /**
      * @var string
      */
     private $title;
@@ -13,6 +18,24 @@ class FaqCategoryDTO
      * @var string
      */
     private $slug;
+
+    /**
+     * @return int
+     */
+    public function getCategoryId()
+    {
+        return $this->category_id;
+    }
+
+    /**
+     * @param int $category_id
+     * @return FaqCategoryDTO
+     */
+    public function setCategoryId($category_id)
+    {
+        $this->category_id = $category_id;
+        return $this;
+    }
 
     /**
      * @return string
