@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Notifications;
 use Ourgarage\Faq\Http\Requests\FaqCategoryRequest;
 use Ourgarage\Faq\Presenters\FaqPresenter;
+use Ourgarage\Faq\DTO\FaqCategoryDTO;
 
 class FaqCategoryController extends Controller
 {
@@ -44,12 +45,16 @@ class FaqCategoryController extends Controller
      *
      * @param FaqCategoryRequest $request
      * @param FaqPresenter $presenter
-     * @param null|integer $id
+     * @param null|int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(FaqCategoryRequest $request, FaqPresenter $presenter, $id = null)
     {
-        $presenter->createOrUpdateCategory($request, $id);
+        $dto = new FaqCategoryDTO();
+        $dto->setSlug($request->slug);
+        $dto->setTitle($request->title);
+
+        $presenter->createOrUpdateCategory($dto, $id);
 
         Notifications::success(trans('faq::faq.notifications.success.category.create'), 'top');
 
@@ -60,7 +65,7 @@ class FaqCategoryController extends Controller
      * View form for edit category
      *
      * @param FaqPresenter $presenter
-     * @param integer $id
+     * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(FaqPresenter $presenter, $id)
@@ -77,7 +82,7 @@ class FaqCategoryController extends Controller
      * Change status of category
      *
      * @param FaqPresenter $presenter
-     * @param integer $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function status(FaqPresenter $presenter, $id)
@@ -93,7 +98,7 @@ class FaqCategoryController extends Controller
      * Delete category from database
      *
      * @param FaqPresenter $presenter
-     * @param integer $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(FaqPresenter $presenter, $id)

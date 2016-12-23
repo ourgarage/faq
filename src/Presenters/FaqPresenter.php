@@ -2,6 +2,8 @@
 
 namespace Ourgarage\Faq\Presenters;
 
+use Illuminate\Database\Eloquent\Collection;
+use Ourgarage\Faq\DTO\FaqCategoryDTO;
 use Ourgarage\Faq\Models\Category;
 use Ourgarage\Faq\Models\QuestionAnswer;
 
@@ -10,26 +12,26 @@ class FaqPresenter
     /**
      * Get all categories of FAQ
      *
-     * @return object
+     * @return Collection|Category[]
      */
     public function getAllCategories()
     {
-        return Category::paginate(20);
+        return Category::paginate(Category::PER_PAGE);
     }
 
     /**
      * Create or update category of FAQ
      *
-     * @param array $data
-     * @param integer $id
+     * @param FaqCategoryDTO $dto
+     * @param int|null $id
      * @return bool
      */
-    public function createOrUpdateCategory($data, $id)
+    public function createOrUpdateCategory(FaqCategoryDTO $dto, $id = null)
     {
         $category = Category::findOrNew($id);
 
-        $category->title = $data->title;
-        $category->slug = $data->slug;
+        $category->title = $dto->getTitle();
+        $category->slug = $dto->getSlug();
         $category->save();
 
         return true;
@@ -38,7 +40,7 @@ class FaqPresenter
     /**
      * Get selected category
      *
-     * @param integer $id
+     * @param int $id
      * @return object
      */
     public function getByCategory($id)
@@ -49,7 +51,7 @@ class FaqPresenter
     /**
      * Update category status
      *
-     * @param integer $id
+     * @param int $id
      * @return bool
      */
     public function updateStatusCategory($id)
@@ -65,7 +67,7 @@ class FaqPresenter
     /**
      * Delete category of FAQ
      *
-     * @param integer $id
+     * @param int $id
      * @return bool
      */
     public function deleteCategory($id)

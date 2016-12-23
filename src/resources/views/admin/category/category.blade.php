@@ -12,7 +12,7 @@
         <div class="faq-box-body">
             <form class="form-horizontal"
                   action="{{ isset($category)
-                  ? route('faq::admin::categories::update', ['id' => $category->id])
+                  ? route('faq::admin::categories::store', ['id' => $category->id])
                   : route('faq::admin::categories::store') }}" method="POST">
 
                 @if(isset($category))
