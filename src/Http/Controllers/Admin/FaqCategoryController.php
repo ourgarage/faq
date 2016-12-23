@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Notifications;
 use Ourgarage\Faq\Http\Requests\FaqCategoryRequest;
 use Ourgarage\Faq\Presenters\FaqPresenter;
+use Ourgarage\Faq\DTO\FaqCategoryDTO;
 
 class FaqCategoryController extends Controller
 {
@@ -49,7 +50,11 @@ class FaqCategoryController extends Controller
      */
     public function store(FaqCategoryRequest $request, FaqPresenter $presenter, $id = null)
     {
-        $presenter->createOrUpdateCategory($request, $id);
+        $dto = new FaqCategoryDTO();
+        $dto->setSlug($request->slug);
+        $dto->setTitle($request->title);
+
+        $presenter->createOrUpdateCategory($dto, $id);
 
         Notifications::success(trans('faq::faq.notifications.success.category.create'), 'top');
 

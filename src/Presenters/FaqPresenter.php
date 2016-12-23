@@ -3,8 +3,8 @@
 namespace Ourgarage\Faq\Presenters;
 
 use Illuminate\Database\Eloquent\Collection;
+use Ourgarage\Faq\DTO\FaqCategoryDTO;
 use Ourgarage\Faq\Models\Category;
-use Request;
 
 class FaqPresenter
 {
@@ -21,16 +21,16 @@ class FaqPresenter
     /**
      * Create or update category of FAQ
      *
-     * @param Request|$data
-     * @param int $id
+     * @param FaqCategoryDTO $dto
+     * @param int|null $id
      * @return bool
      */
-    public function createOrUpdateCategory($data, $id)
+    public function createOrUpdateCategory(FaqCategoryDTO $dto, $id = null)
     {
         $category = Category::findOrNew($id);
 
-        $category->title = $data->title;
-        $category->slug = $data->slug;
+        $category->title = $dto->getTitle();
+        $category->slug = $dto->getSlug();
         $category->save();
 
         return true;
