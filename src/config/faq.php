@@ -7,17 +7,25 @@ return [
         'name' => 'faq',
 
         'menu' => [
-            'url' => 'price::admin::index',
+            'url' => 'faq::admin::index',
             'caption' => 'FAQ',
             'icon' => 'fa fa-question-circle',
-            'active' => 'price::admin::index',
-        ],
+            'active' => 'faq::admin::index',
+            'subitems' => [
+                [
+                    'url' => 'faq::admin::categories::index',
+                    'caption' => 'Categories',
+                    'icon' => 'fa fa-list',
+                    'active' => 'faq::admin::categories::index'
+                ],
 
-        'menu-settings' => [
-            'url' => 'blog::admin::get-settings',
-            'caption' => 'Blog settings',
-            'icon' => 'fa fa-cog',
-            'active' => 'blog::admin::get-settings',
+                [
+                    'url' => 'faq::admin::qa::index',
+                    'caption' => 'Questions-Answers',
+                    'icon' => 'fa fa-list',
+                    'active' => 'faq::admin::qa::index'
+                ]
+            ]
         ],
 
         'default-settings' => [
