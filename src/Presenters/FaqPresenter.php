@@ -28,7 +28,7 @@ class FaqPresenter
      */
     public function createOrUpdateCategory(FaqCategoryDTO $dto)
     {
-        $category = Category::findOrNew($dto->getCategoryId());
+        $category = Category::findOrNew($dto->getId());
 
         $category->title = $dto->getTitle();
         $category->slug = $dto->getSlug();

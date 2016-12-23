@@ -7,7 +7,7 @@ class FaqCategoryDTO
     /**
      * @var int
      */
-    private $category_id;
+    private $id;
 
     /**
      * @var string
@@ -22,18 +22,19 @@ class FaqCategoryDTO
     /**
      * @return int
      */
-    public function getCategoryId()
+    public function getId()
     {
-        return $this->category_id;
+        return $this->id;
     }
 
     /**
-     * @param int $category_id
+     * @param int $id
      * @return FaqCategoryDTO
      */
-    public function setCategoryId($category_id)
+    public function setId($id)
     {
-        $this->category_id = $category_id;
+        $this->id = $id;
+
         return $this;
     }
 
