@@ -21,12 +21,12 @@ class FaqQuestionAnswerDTO
     private $slug;
 
     /**
-     * @var mixed
+     * @var string
      */
     private $question;
 
     /**
-     * @var mixed
+     * @var string
      */
     private $answer;
 
@@ -104,7 +104,7 @@ class FaqQuestionAnswerDTO
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getQuestion()
     {
@@ -112,7 +112,7 @@ class FaqQuestionAnswerDTO
     }
 
     /**
-     * @param mixed $question
+     * @param string $question
      * @return FaqQuestionAnswerDTO
      */
     public function setQuestion($question)
@@ -122,7 +122,7 @@ class FaqQuestionAnswerDTO
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAnswer()
     {
@@ -130,7 +130,7 @@ class FaqQuestionAnswerDTO
     }
 
     /**
-     * @param mixed $answer
+     * @param string $answer
      * @return FaqQuestionAnswerDTO
      */
     public function setAnswer($answer)
