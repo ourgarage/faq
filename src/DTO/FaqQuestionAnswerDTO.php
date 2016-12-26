@@ -4,6 +4,7 @@ namespace Ourgarage\Faq\DTO;
 
 class FaqQuestionAnswerDTO
 {
+    private $id;
     /**
      * @var int
      */
@@ -28,6 +29,25 @@ class FaqQuestionAnswerDTO
      * @var mixed
      */
     private $answer;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return FaqQuestionAnswerDTO
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
 
     /**
      * @return int

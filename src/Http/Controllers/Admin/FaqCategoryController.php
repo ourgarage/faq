@@ -55,7 +55,7 @@ class FaqCategoryController extends Controller
         $dto->setSlug($request->slug);
         $dto->setTitle($request->title);
 
-        $presenter->createOrUpdateCategory($dto, $id);
+        $presenter->createOrUpdateCategory($dto);
 
         Notifications::success(trans('faq::faq.notifications.success.category.create'), 'top');
 

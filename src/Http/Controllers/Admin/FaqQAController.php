@@ -50,19 +50,27 @@ class FaqQAController extends Controller
     public function store(FaqQuestionAnswerRequest $request, FaqPresenter $presenter, $id = null)
     {
         $dto = new FaqQuestionAnswerDTO();
+        $dto->setId($id);
         $dto->setCategory($request->category);
         $dto->setTitle($request->title);
         $dto->setSlug($request->slug);
         $dto->setQuestion($request->question);
         $dto->setAnswer($request->answer);
 
-        $presenter->createOrUpdateQuestionAnswer($dto, $id);
+        $presenter->createOrUpdateQuestionAnswer($dto);
 
         Notifications::success(trans('faq::faq.notifications.success.qa.create'), 'top');
 
         return redirect()->route('faq::admin::qa::index');
     }
 
+    /**
+     * View form for edit question-answer
+     *
+     * @param FaqPresenter $presenter
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit(FaqPresenter $presenter, $id)
     {
         $questionAnswer = $presenter->getByQuestionAnswer($id);
@@ -73,5 +81,28 @@ class FaqQAController extends Controller
         return view('faq::admin.qa.qa', compact('questionAnswer'));
     }
 
+    /**
+     * Change status of question-answer
+     *
+     * @param FaqPresenter $presenter
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function status(FaqPresenter $presenter, $id)
+    {
+        $presenter->updateStatusQuestionAnswer($id);
 
+        Notifications::success(trans('faq::faq.notifications.success.qa.status'), 'top');
+
+        return redirect()->route('faq::admin::qa::index');
+    }
+
+    public function destroy(FaqPresenter $presenter, $id)
+    {
+        $presenter->deleteQuestionAnswer($id);
+
+        Notifications::success(trans('faq::faq.notifications.success.qa.delete'), 'top');
+
+        return redirect()->route('faq::admin::qa::index');
+    }
 }

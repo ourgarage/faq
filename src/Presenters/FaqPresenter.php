@@ -82,23 +82,22 @@ class FaqPresenter
     /**
      * Get all questions-answers
      *
-     * @return object
+     * @return Collection|QuestionAnswer[]
      */
     public function getAllQuestionsAnswers()
     {
-        return QuestionAnswer::paginate(QuestionAnswer::DEFAULT_PAGINATE);
+        return QuestionAnswer::paginate(FaqPresenter::PER_PAGE);
     }
 
     /**
      * Create or update question-answer
      *
      * @param FaqQuestionAnswerDTO $dto
-     * @param int $id
      * @return bool
      */
-    public function createOrUpdateQuestionAnswer(FaqQuestionAnswerDTO $dto, $id)
+    public function createOrUpdateQuestionAnswer(FaqQuestionAnswerDTO $dto)
     {
-        $questionAnswer = QuestionAnswer::findOrNew($id);
+        $questionAnswer = QuestionAnswer::findOrNew($dto->getId());
 
         $questionAnswer->faq_category_id = $dto->getCategory();
         $questionAnswer->title = $dto->getTitle();
@@ -133,6 +132,19 @@ class FaqPresenter
 
         $questionAnswer->status = $questionAnswer->status == QuestionAnswer::STATUS_ACTIVE ? QuestionAnswer::STATUS_DISABLED : QuestionAnswer::STATUS_ACTIVE;
         $questionAnswer->save();
+
+        return true;
+    }
+
+    /**
+     * Delete question-answer
+     *
+     * @param int $id
+     * @return bool
+     */
+    public function deleteQuestionAnswer($id)
+    {
+        QuestionAnswer::destroy($id);
 
         return true;
     }
