@@ -10,6 +10,8 @@ use Ourgarage\Faq\Models\QuestionAnswer;
 
 class FaqPresenter
 {
+    const PER_PAGE = 20;
+
     /**
      * Get all categories of FAQ
      *
@@ -17,19 +19,18 @@ class FaqPresenter
      */
     public function getAllCategories()
     {
-        return Category::paginate(Category::PER_PAGE);
+        return Category::paginate(FaqPresenter::PER_PAGE);
     }
 
     /**
      * Create or update category of FAQ
      *
      * @param FaqCategoryDTO $dto
-     * @param int|null $id
      * @return bool
      */
-    public function createOrUpdateCategory(FaqCategoryDTO $dto, $id = null)
+    public function createOrUpdateCategory(FaqCategoryDTO $dto)
     {
-        $category = Category::findOrNew($id);
+        $category = Category::findOrNew($dto->getId());
 
         $category->title = $dto->getTitle();
         $category->slug = $dto->getSlug();

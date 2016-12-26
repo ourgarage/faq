@@ -51,6 +51,7 @@ class FaqCategoryController extends Controller
     public function store(FaqCategoryRequest $request, FaqPresenter $presenter, $id = null)
     {
         $dto = new FaqCategoryDTO();
+        $dto->setId($id);
         $dto->setSlug($request->slug);
         $dto->setTitle($request->title);
 
