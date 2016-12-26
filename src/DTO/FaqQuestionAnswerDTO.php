@@ -4,7 +4,11 @@ namespace Ourgarage\Faq\DTO;
 
 class FaqQuestionAnswerDTO
 {
+    /**
+     * @var int
+     */
     private $id;
+
     /**
      * @var int
      */
