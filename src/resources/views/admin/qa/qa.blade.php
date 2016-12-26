@@ -66,7 +66,7 @@
                     <div class="form-group has-feedback">
                         <label class="col-md-2">{{ trans('faq::faq.qa.table.question') }} : *</label>
                         <div class="col-md-8">
-                            <textarea name="question" class="form-control">
+                            <textarea name="question" class="form-control editor">
                                 {{ isset($questionAnswer) ? old('question', $questionAnswer->question) : old('question') }}
                             </textarea>
                         </div>
@@ -75,7 +75,7 @@
                     <div class="form-group has-feedback">
                         <label class="col-md-2">{{ trans('faq::faq.qa.table.answer') }} : *</label>
                         <div class="col-md-8">
-                            <textarea name="answer" class="form-control">
+                            <textarea name="answer" class="form-control editor">
                                 {{ isset($questionAnswer) ? old('answer', $questionAnswer->answer) : old('answer') }}
                             </textarea>
                         </div>
@@ -103,4 +103,9 @@
 
 @section('css')
     <link href='/packages/faq/css/faq.css' rel='stylesheet' type='text/css'>
+@endsection
+
+@section('js')
+    @inject('connect', 'App\Http\ViewConnectors\EditorConnector')
+    {!! $connect->connect('.editor', App::getLocale(), null, App\Http\ViewConnectors\EditorConnector::MODE_FULL, true) !!}
 @endsection
