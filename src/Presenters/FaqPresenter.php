@@ -124,13 +124,14 @@ class FaqPresenter
      * Update question-answer status
      *
      * @param int $id
+     * @param int $status
      * @return bool
      */
-    public function updateStatusQuestionAnswer($id)
+    public function updateStatusQuestionAnswer($id, $status)
     {
         $questionAnswer = QuestionAnswer::findOrFail($id);
 
-        $questionAnswer->status = $questionAnswer->status == QuestionAnswer::STATUS_ACTIVE ? QuestionAnswer::STATUS_DISABLED : QuestionAnswer::STATUS_ACTIVE;
+        $questionAnswer->status = $status;
         $questionAnswer->save();
 
         return true;

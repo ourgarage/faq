@@ -90,7 +90,9 @@ class FaqQAController extends Controller
      */
     public function status(FaqPresenter $presenter, $id)
     {
-        $presenter->updateStatusQuestionAnswer($id);
+        $status = request('status');
+
+        $presenter->updateStatusQuestionAnswer($id, $status);
 
         Notifications::success(trans('faq::faq.notifications.success.qa.status'), 'top');
 

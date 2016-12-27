@@ -36,6 +36,8 @@
                                       method="POST">
                                     {{ csrf_field() }}
                                     @if($questionAnswer->status == \Ourgarage\faq\Models\QuestionAnswer::STATUS_ACTIVE)
+                                        <input type="hidden" name="status"
+                                               value="{{ \Ourgarage\faq\Models\QuestionAnswer::STATUS_DISABLED }}">
                                         <button type="submit"
                                                 data-confirm="@lang('faq::faq.qa.popup.deactivate')"
                                                 class="btn btn-xs btn-success" data-toggle="tooltip"
@@ -43,6 +45,8 @@
                                                 title="{{ trans('users.tooltip.status') }}"><i class="fa fa-check"></i>
                                         </button>
                                     @else
+                                        <input type="hidden" name="status"
+                                               value="{{ \Ourgarage\faq\Models\QuestionAnswer::STATUS_ACTIVE }}">
                                         <button type="submit"
                                                 data-confirm="@lang('faq::faq.qa.popup.activate')"
                                                 class="btn btn-xs btn-danger" data-toggle="tooltip"
