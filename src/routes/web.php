@@ -30,7 +30,7 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/create', 'FaqQAController@create')->name('faq::admin::qa::create');
             Route::match(['put', 'post'], '/store/{id?}', 'FaqQAController@store')->name('faq::admin::qa::store');
             Route::get('/{id}', 'FaqQAController@edit')->name('faq::admin::qa::edit');
-            Route::post('/status/{id}', 'FaqQAController@status')->name('faq::admin::qa::status');
+            Route::post('/status/{id}/{status}', 'FaqQAController@changeStatus')->name('faq::admin::qa::changeStatus');
             Route::delete('/{id}', 'FaqQAController@destroy')->name('faq::admin::qa::destroy');
         });
     });
