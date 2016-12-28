@@ -32,7 +32,11 @@
                             <td>{{ $category->title }}</td>
                             <td>{{ df($category->created_at) }}</td>
                             <td class="for-form-inline">
-                                <form action="{{ route('faq::admin::categories::status', ['id' => $category->id]) }}"
+                                <form action="{{ route('faq::admin::categories::changeStatus', ['id' => $category->id,
+                                    'status' => $category->status == \Ourgarage\faq\Models\Category::STATUS_ACTIVE
+                                    ? \Ourgarage\faq\Models\Category::STATUS_DISABLED
+                                    : \Ourgarage\faq\Models\Category::STATUS_ACTIVE
+                                ]) }}"
                                       method="POST">
                                     {{ csrf_field() }}
                                     @if($category->status == \Ourgarage\faq\Models\Category::STATUS_ACTIVE)

@@ -84,11 +84,12 @@ class FaqCategoryController extends Controller
      *
      * @param FaqPresenter $presenter
      * @param int $id
+     * @param int $status
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function status(FaqPresenter $presenter, $id)
+    public function changeStatus(FaqPresenter $presenter, $id, $status)
     {
-        $presenter->updateStatusCategory($id);
+        $presenter->updateStatusCategory($id, $status);
 
         Notifications::success(trans('faq::faq.notifications.success.category.status'), 'top');
 

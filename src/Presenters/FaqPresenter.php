@@ -54,13 +54,14 @@ class FaqPresenter
      * Update category status
      *
      * @param int $id
+     * @param int $status
      * @return bool
      */
-    public function updateStatusCategory($id)
+    public function updateStatusCategory($id, $status)
     {
         $category = Category::findOrFail($id);
 
-        $category->status = $category->status == Category::STATUS_ACTIVE ? Category::STATUS_DISABLED : Category::STATUS_ACTIVE;
+        $category->status = $status;
         $category->save();
 
         return true;
