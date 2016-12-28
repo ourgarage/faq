@@ -16,9 +16,11 @@ Route::group(['middleware' => 'web'], function () {
         Route::group(['prefix' => '/categories'], function () {
             Route::get('/', 'FaqCategoryController@index')->name('faq::admin::categories::index');
             Route::get('/create', 'FaqCategoryController@create')->name('faq::admin::categories::create');
-            Route::match(['put', 'post'], '/store/{id?}', 'FaqCategoryController@store')->name('faq::admin::categories::store');
+            Route::match(['put', 'post'], '/store/{id?}', 'FaqCategoryController@store')
+                ->name('faq::admin::categories::store');
             Route::get('/{id}', 'FaqCategoryController@edit')->name('faq::admin::categories::edit');
-            Route::post('/status/{id}', 'FaqCategoryController@status')->name('faq::admin::categories::status');
+            Route::post('/status/{id}/{status}', 'FaqCategoryController@changeStatus')
+                ->name('faq::admin::categories::changeStatus');
             Route::delete('/{id}', 'FaqCategoryController@destroy')->name('faq::admin::categories::destroy');
         });
 
