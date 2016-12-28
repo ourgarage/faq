@@ -43,8 +43,8 @@
                                         <button type="submit"
                                                 data-confirm="@lang('faq::faq.category.popup.deactivate')"
                                                 class="btn btn-xs btn-success" data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="{{ trans('users.tooltip.status') }}"><i class="fa fa-check"></i>
+                                                data-placement="top" title="{{ trans('users.tooltip.status') }}">
+                                            <i class="fa fa-check"></i>
                                         </button>
                                     @else
                                         <button type="submit"
