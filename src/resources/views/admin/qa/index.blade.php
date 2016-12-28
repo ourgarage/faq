@@ -33,13 +33,13 @@
                             <td>{{ df($questionAnswer->created_at) }}</td>
                             <td class="for-form-inline">
                                 <form action="{{ route('faq::admin::qa::changeStatus', ['id' => $questionAnswer->id,
-                                    'status' => $questionAnswer->status == \Ourgarage\faq\Models\QuestionAnswer::STATUS_ACTIVE
-                                    ? \Ourgarage\faq\Models\QuestionAnswer::STATUS_DISABLED
-                                    : \Ourgarage\faq\Models\QuestionAnswer::STATUS_ACTIVE
+                                    'status' => $questionAnswer->status == \Ourgarage\Faq\Models\QuestionAnswer::STATUS_ACTIVE
+                                    ? \Ourgarage\Faq\Models\QuestionAnswer::STATUS_DISABLED
+                                    : \Ourgarage\Faq\Models\QuestionAnswer::STATUS_ACTIVE
                                 ]) }}"
                                       method="POST">
                                     {{ csrf_field() }}
-                                    @if($questionAnswer->status == \Ourgarage\faq\Models\QuestionAnswer::STATUS_ACTIVE)
+                                    @if($questionAnswer->status == \Ourgarage\Faq\Models\QuestionAnswer::STATUS_ACTIVE)
                                         <button type="submit"
                                                 data-confirm="@lang('faq::faq.qa.popup.deactivate')"
                                                 class="btn btn-xs btn-success" data-toggle="tooltip"
