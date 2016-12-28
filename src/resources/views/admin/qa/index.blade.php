@@ -32,21 +32,21 @@
                             <td>{{ $questionAnswer->title }}</td>
                             <td>{{ df($questionAnswer->created_at) }}</td>
                             <td class="for-form-inline">
-                                <form action="{{ route('faq::admin::qa::status', ['id' => $questionAnswer->id]) }}"
+                                <form action="{{ route('faq::admin::qa::changeStatus', ['id' => $questionAnswer->id,
+                                    'status' => $questionAnswer->status == \Ourgarage\faq\Models\QuestionAnswer::STATUS_ACTIVE
+                                    ? \Ourgarage\faq\Models\QuestionAnswer::STATUS_DISABLED
+                                    : \Ourgarage\faq\Models\QuestionAnswer::STATUS_ACTIVE
+                                ]) }}"
                                       method="POST">
                                     {{ csrf_field() }}
                                     @if($questionAnswer->status == \Ourgarage\faq\Models\QuestionAnswer::STATUS_ACTIVE)
-                                        <input type="hidden" name="status"
-                                               value="{{ \Ourgarage\faq\Models\QuestionAnswer::STATUS_DISABLED }}">
                                         <button type="submit"
                                                 data-confirm="@lang('faq::faq.qa.popup.deactivate')"
                                                 class="btn btn-xs btn-success" data-toggle="tooltip"
-                                                data-placement="top"
-                                                title="{{ trans('users.tooltip.status') }}"><i class="fa fa-check"></i>
+                                                data-placement="top" title="{{ trans('users.tooltip.status') }}">
+                                            <i class="fa fa-check"></i>
                                         </button>
                                     @else
-                                        <input type="hidden" name="status"
-                                               value="{{ \Ourgarage\faq\Models\QuestionAnswer::STATUS_ACTIVE }}">
                                         <button type="submit"
                                                 data-confirm="@lang('faq::faq.qa.popup.activate')"
                                                 class="btn btn-xs btn-danger" data-toggle="tooltip"

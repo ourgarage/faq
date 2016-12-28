@@ -86,12 +86,11 @@ class FaqQAController extends Controller
      *
      * @param FaqPresenter $presenter
      * @param int $id
+     * @param int $status
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function status(FaqPresenter $presenter, $id)
+    public function changeStatus(FaqPresenter $presenter, $id, $status)
     {
-        $status = request('status');
-
         $presenter->updateStatusQuestionAnswer($id, $status);
 
         Notifications::success(trans('faq::faq.notifications.success.qa.status'), 'top');
