@@ -150,4 +150,25 @@ class FaqPresenter
 
         return true;
     }
+
+    /**
+     * Get all active categories of FAQ
+     *
+     * @return Collection|Category[]
+     */
+    public function getAllActiveCategories()
+    {
+        return Category::where('status', Category::STATUS_ACTIVE)->paginate(FaqPresenter::PER_PAGE);
+    }
+
+    /**
+     * Get question-answer
+     *
+     * @param string $slug
+     * @return object
+     */
+    public function getBySlugQuestionAnswer($slug)
+    {
+        return QuestionAnswer::where('slug', $slug)->first();
+    }
 }

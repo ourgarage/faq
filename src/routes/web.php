@@ -2,6 +2,9 @@
 
 Route::group(['middleware' => 'web'], function () {
 
+    /**
+     * Group for admin
+     */
     Route::group([
         'prefix' => 'admin/faq',
         'middleware' => ['auth'],
@@ -35,5 +38,13 @@ Route::group(['middleware' => 'web'], function () {
             Route::post('/status/{id}/{status}', 'FaqQAController@changeStatus')->name('faq::admin::qa::changeStatus');
             Route::delete('/{id}', 'FaqQAController@destroy')->name('faq::admin::qa::destroy');
         });
+    });
+
+    /**
+     * Group for front
+     */
+    Route::group(['prefix' => '/faq', 'namespace' => 'Ourgarage\Faq\Http\Controllers'], function () {
+        Route::get('/', 'FaqController@index')->name('faq::front::index');
+        Route::get('/{slug}', 'FaqController@show')->name('faq::front::qa');
     });
 });
