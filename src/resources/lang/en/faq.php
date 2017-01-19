@@ -86,5 +86,10 @@ return [
                 'status' => 'Status of question-answer has been successfully changed'
             ]
         ]
+    ],
+
+    'front' => [
+        'index-head' => 'Frequently asked Questions',
+        'no-qa' => 'You have no FAQ'
     ]
 ];
