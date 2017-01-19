@@ -90,6 +90,9 @@ return [
 
     'front' => [
         'index-head' => 'Frequently asked Questions',
-        'no-qa' => 'You have no FAQ'
+        'no-qa' => 'You have no FAQ',
+        'question' => 'Question',
+        'answer' => 'Answer',
+        'back' => 'Back to home FAQ'
     ]
 ];

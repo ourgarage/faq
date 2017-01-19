@@ -29,7 +29,10 @@
                                         <div class="panel-body">
                                             @foreach($category->questionsAnswers as $questionAnswer)
                                                 <ul>
-                                                    <li>{{ $questionAnswer->title }}</li>
+                                                    <li>
+                                                        <a href="{{ route('faq::front::qa', ['slug' => $questionAnswer->slug]) }}">
+                                                            {{ $questionAnswer->title }}</a>
+                                                    </li>
                                                 </ul>
                                             @endforeach
                                         </div>
