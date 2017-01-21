@@ -17,7 +17,6 @@
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th>{{ trans('faq::faq.category.table.uri') }}</th>
                         <th>{{ trans('faq::faq.category.table.title') }}</th>
                         <th>{{ trans('faq::faq.category.table.created') }}</th>
                         <th>{{ trans('faq::faq.category.table.options') }}</th>
@@ -27,8 +26,6 @@
                     @foreach($categories as $category)
                         <tr>
                             <th>{{ $category->id }}</th>
-                            <td><a href="#" target="_blank">{{ $category->slug }}</a>
-                            </td>
                             <td>{{ $category->title }}</td>
                             <td>{{ df($category->created_at) }}</td>
                             <td class="for-form-inline">

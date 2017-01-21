@@ -27,7 +27,8 @@
                     @foreach($questionsAnswers as $questionAnswer)
                         <tr>
                             <th>{{ $questionAnswer->id }}</th>
-                            <td><a href="#" target="_blank">{{ $questionAnswer->slug }}</a>
+                            <td><a href="{{ route('faq::front::qa', ['slug' => $questionAnswer->slug]) }}"
+                                   target="_blank">{{ $questionAnswer->slug }}</a>
                             </td>
                             <td>{{ $questionAnswer->title }}</td>
                             <td>{{ df($questionAnswer->created_at) }}</td>
