@@ -156,7 +156,7 @@ class FaqPresenter
      *
      * @return Collection|Category[]
      */
-    public function getAllActiveCategories()
+    public function getActiveCategories()
     {
         return Category::where('status', Category::STATUS_ACTIVE)->paginate(FaqPresenter::PER_PAGE);
     }

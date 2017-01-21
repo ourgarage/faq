@@ -9,7 +9,7 @@ class FaqController extends Controller
 {
     public function index(FaqPresenter $presenter)
     {
-        $categories = $presenter->getAllActiveCategories();
+        $categories = $presenter->getActiveCategories();
 
         return view('faq::site.index', compact('categories'));
     }
