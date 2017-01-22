@@ -165,7 +165,7 @@ class FaqPresenter
      * Get question-answer
      *
      * @param string $slug
-     * @return object
+     * @return QuestionAnswer|null
      */
     public function getQuestionAnswerBySlug($slug)
     {
