@@ -10,7 +10,7 @@
                 @if(!$categories->isEmpty())
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         @foreach($categories as $category)
-                            @include('faq::site.index-qa', ['$category' => $category])
+                            @include('faq::site._qa-category', ['$category' => $category])
                         @endforeach
                     </div>
                 @else
