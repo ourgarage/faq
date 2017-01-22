@@ -167,7 +167,7 @@ class FaqPresenter
      * @param string $slug
      * @return object
      */
-    public function getBySlugQuestionAnswer($slug)
+    public function getQuestionAnswerBySlug($slug)
     {
         return QuestionAnswer::where('slug', $slug)->first();
     }
