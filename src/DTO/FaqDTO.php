@@ -39,7 +39,7 @@ class FaqDTO
 
     /**
      * @param int $id
-     * @return FaqQuestionAnswerDTO
+     * @return FaqDTO
      */
     public function setId($id)
     {
@@ -58,7 +58,7 @@ class FaqDTO
 
     /**
      * @param int $category
-     * @return FaqQuestionAnswerDTO
+     * @return FaqDTO
      */
     public function setCategory($category)
     {
@@ -76,7 +76,7 @@ class FaqDTO
 
     /**
      * @param string $title
-     * @return FaqQuestionAnswerDTO
+     * @return FaqDTO
      */
     public function setTitle($title)
     {
@@ -94,7 +94,7 @@ class FaqDTO
 
     /**
      * @param string $slug
-     * @return FaqQuestionAnswerDTO
+     * @return FaqDTO
      */
     public function setSlug($slug)
     {
@@ -112,7 +112,7 @@ class FaqDTO
 
     /**
      * @param string $answer
-     * @return FaqQuestionAnswerDTO
+     * @return FaqDTO
      */
     public function setAnswer($answer)
     {
