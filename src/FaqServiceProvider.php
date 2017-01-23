@@ -39,8 +39,6 @@ class FaqServiceProvider extends ServiceProvider
 
         $this->app->make(Http\Controllers\Admin\FaqCategoryController::class);
 
-        $this->app->make(Http\Controllers\Admin\FaqQAController::class);
-
         $this->app->make(Http\Controllers\FaqController::class);
 
         $this->mergeConfigFrom(__DIR__.'/config/faq.php', 'packages');

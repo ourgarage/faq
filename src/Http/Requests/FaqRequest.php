@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Notifications;
 use Illuminate\Validation\Rule;
 
-class FaqQuestionAnswerRequest extends FormRequest
+class FaqRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,6 @@ class FaqQuestionAnswerRequest extends FormRequest
     {
         return [
             'category' => 'required',
-            'question' => 'required',
             'answer' => 'required',
             'title' => [
                 'required',

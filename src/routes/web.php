@@ -11,8 +11,6 @@ Route::group(['middleware' => 'web'], function () {
         'namespace' => 'Ourgarage\Faq\Http\Controllers\Admin'
     ], function () {
 
-        Route::get('/', 'FaqController@index')->name('faq::admin::index');
-
         /**
          * Group FAQ Categories
          */
@@ -31,12 +29,12 @@ Route::group(['middleware' => 'web'], function () {
          * Group question-answer
          */
         Route::group(['prefix' => '/qa'], function () {
-            Route::get('/', 'FaqQAController@index')->name('faq::admin::qa::index');
-            Route::get('/create', 'FaqQAController@create')->name('faq::admin::qa::create');
-            Route::match(['put', 'post'], '/store/{id?}', 'FaqQAController@store')->name('faq::admin::qa::store');
-            Route::get('/{id}', 'FaqQAController@edit')->name('faq::admin::qa::edit');
-            Route::post('/status/{id}/{status}', 'FaqQAController@changeStatus')->name('faq::admin::qa::changeStatus');
-            Route::delete('/{id}', 'FaqQAController@destroy')->name('faq::admin::qa::destroy');
+            Route::get('/', 'FaqController@index')->name('faq::admin::qa::index');
+            Route::get('/create', 'FaqController@create')->name('faq::admin::qa::create');
+            Route::match(['put', 'post'], '/store/{id?}', 'FaqController@store')->name('faq::admin::qa::store');
+            Route::get('/{id}', 'FaqController@edit')->name('faq::admin::qa::edit');
+            Route::post('/status/{id}/{status}', 'FaqController@changeStatus')->name('faq::admin::qa::changeStatus');
+            Route::delete('/{id}', 'FaqController@destroy')->name('faq::admin::qa::destroy');
         });
     });
 
@@ -45,6 +43,5 @@ Route::group(['middleware' => 'web'], function () {
      */
     Route::group(['prefix' => '/faq', 'namespace' => 'Ourgarage\Faq\Http\Controllers'], function () {
         Route::get('/', 'FaqController@index')->name('faq::front::index');
-        Route::get('/{slug}', 'FaqController@show')->name('faq::front::qa');
     });
 });

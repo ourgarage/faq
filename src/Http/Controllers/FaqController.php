@@ -19,18 +19,4 @@ class FaqController extends Controller
 
         return view('faq::site.index', compact('categories'));
     }
-
-    /**
-     * Get question-answer by slug
-     *
-     * @param FaqPresenter $presenter
-     * @param string $slug
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function show(FaqPresenter $presenter, $slug)
-    {
-        $questionAnswer = $presenter->getQuestionAnswerBySlug($slug);
-
-        return view('faq::site.qa', compact('questionAnswer'));
-    }
 }

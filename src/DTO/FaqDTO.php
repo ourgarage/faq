@@ -2,7 +2,7 @@
 
 namespace Ourgarage\Faq\DTO;
 
-class FaqQuestionAnswerDTO
+class FaqDTO
 {
     /**
      * @var int
@@ -23,11 +23,6 @@ class FaqQuestionAnswerDTO
      * @var string
      */
     private $slug;
-
-    /**
-     * @var string
-     */
-    private $question;
 
     /**
      * @var string
@@ -104,24 +99,6 @@ class FaqQuestionAnswerDTO
     public function setSlug($slug)
     {
         $this->slug = $slug;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getQuestion()
-    {
-        return $this->question;
-    }
-
-    /**
-     * @param string $question
-     * @return FaqQuestionAnswerDTO
-     */
-    public function setQuestion($question)
-    {
-        $this->question = $question;
         return $this;
     }
 

@@ -15,8 +15,8 @@ class Category extends Model
         'status', 'title', 'slug'
     ];
 
-    public function questionsAnswers()
+    public function faq()
     {
-        return $this->hasMany('Ourgarage\Faq\Models\QuestionAnswer', 'faq_category_id');
+        return $this->hasMany('Ourgarage\Faq\Models\Faq', 'faq_category_id');
     }
 }

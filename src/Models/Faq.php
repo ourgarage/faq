@@ -4,7 +4,7 @@ namespace Ourgarage\Faq\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class QuestionAnswer extends Model
+class Faq extends Model
 {
     const STATUS_ACTIVE = 1;
     const STATUS_DISABLED = 0;
@@ -12,6 +12,6 @@ class QuestionAnswer extends Model
     protected $table = 'faq_questions_answers';
 
     protected $fillable = [
-        'faq_category_id', 'status', 'title', 'slug', 'question', 'answer'
+        'faq_category_id', 'status', 'title', 'slug', 'answer'
     ];
 }

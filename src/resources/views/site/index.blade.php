@@ -8,11 +8,16 @@
             </div>
             <div class="panel-body">
                 @if(!$categories->isEmpty())
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        @foreach($categories as $category)
-                            @include('faq::site._qa-category', ['$category' => $category])
-                        @endforeach
-                    </div>
+                    @foreach($categories as $category)
+                        @if(!$category->faq->isEmpty())
+                            <div class="panel panel-default">
+                                <div class="panel-heading">{{ $category->title }}</div>
+                                <div class="panel-body">
+                                    @include('faq::site._qa-category', ['$category' => $category])
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 @else
                     {{ trans('faq::faq.front.no-qa') }}
                 @endif
