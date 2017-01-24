@@ -4,9 +4,9 @@ namespace Ourgarage\Faq\Presenters;
 
 use Illuminate\Database\Eloquent\Collection;
 use Ourgarage\Faq\DTO\FaqCategoryDTO;
-use Ourgarage\Faq\DTO\FaqQuestionAnswerDTO;
+use Ourgarage\Faq\DTO\FaqDTO;
 use Ourgarage\Faq\Models\Category;
-use Ourgarage\Faq\Models\QuestionAnswer;
+use Ourgarage\Faq\Models\Faq;
 
 class FaqPresenter
 {
@@ -26,6 +26,7 @@ class FaqPresenter
      * Create or update category of FAQ
      *
      * @param FaqCategoryDTO $dto
+     *
      * @return bool
      */
     public function createOrUpdateCategory(FaqCategoryDTO $dto)
@@ -43,6 +44,7 @@ class FaqPresenter
      * Get selected category
      *
      * @param int $id
+     *
      * @return object
      */
     public function getByCategory($id)
@@ -55,6 +57,7 @@ class FaqPresenter
      *
      * @param int $id
      * @param int $status
+     *
      * @return bool
      */
     public function updateStatusCategory($id, $status)
@@ -71,6 +74,7 @@ class FaqPresenter
      * Delete category of FAQ
      *
      * @param int $id
+     *
      * @return bool
      */
     public function deleteCategory($id)
@@ -81,73 +85,85 @@ class FaqPresenter
     }
 
     /**
-     * Get all questions-answers
+     * Get all FAQ
      *
-     * @return Collection|QuestionAnswer[]
+     * @return Collection|Faq[]
      */
-    public function getAllQuestionsAnswers()
+    public function getAllFaqs()
     {
-        return QuestionAnswer::paginate(FaqPresenter::PER_PAGE);
+        return Faq::paginate(FaqPresenter::PER_PAGE);
     }
 
     /**
-     * Create or update question-answer
+     * Create or update FAQ
      *
-     * @param FaqQuestionAnswerDTO $dto
+     * @param FaqDTO $dto
+     *
      * @return bool
      */
-    public function createOrUpdateQuestionAnswer(FaqQuestionAnswerDTO $dto)
+    public function createOrUpdateFaq(FaqDTO $dto)
     {
-        $questionAnswer = QuestionAnswer::findOrNew($dto->getId());
+        $faq = Faq::findOrNew($dto->getId());
 
-        $questionAnswer->faq_category_id = $dto->getCategory();
-        $questionAnswer->title = $dto->getTitle();
-        $questionAnswer->slug = $dto->getSlug();
-        $questionAnswer->question = $dto->getQuestion();
-        $questionAnswer->answer = $dto->getAnswer();
-        $questionAnswer->save();
+        $faq->faq_category_id = $dto->getCategory();
+        $faq->title = $dto->getTitle();
+        $faq->slug = $dto->getSlug();
+        $faq->answer = $dto->getAnswer();
+        $faq->save();
 
         return true;
     }
 
     /**
-     * Get selected question-answer
+     * Get selected FAQ
      *
      * @param int $id
      * @return object
      */
-    public function getByQuestionAnswer($id)
+    public function getByFaq($id)
     {
-        return QuestionAnswer::findOrFail($id);
+        return Faq::findOrFail($id);
     }
 
     /**
-     * Update question-answer status
+     * Update FAQ status
      *
      * @param int $id
      * @param int $status
+     *
      * @return bool
      */
-    public function updateStatusQuestionAnswer($id, $status)
+    public function updateStatusFaq($id, $status)
     {
-        $questionAnswer = QuestionAnswer::findOrFail($id);
+        $faq = Faq::findOrFail($id);
 
-        $questionAnswer->status = $status;
-        $questionAnswer->save();
+        $faq->status = $status;
+        $faq->save();
 
         return true;
     }
 
     /**
-     * Delete question-answer
+     * Delete FAQ
      *
      * @param int $id
+     *
      * @return bool
      */
-    public function deleteQuestionAnswer($id)
+    public function deleteFaq($id)
     {
-        QuestionAnswer::destroy($id);
+        Faq::destroy($id);
 
         return true;
+    }
+
+    /**
+     * Get all active categories of FAQ
+     *
+     * @return Collection|Category[]
+     */
+    public function getActiveCategories()
+    {
+        return Category::where('status', Category::STATUS_ACTIVE)->paginate(FaqPresenter::PER_PAGE);
     }
 }

@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Ourgarage\Faq\Models\QuestionAnswer;
 
-class CreateFaqQuestionsAnswersTable extends Migration
+class CreateFaqQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,12 @@ class CreateFaqQuestionsAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('faq_questions_answers', function (Blueprint $table) {
+        Schema::create('faq_questions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('faq_category_id')->unsigned();
             $table->string('status')->default(QuestionAnswer::STATUS_ACTIVE)->index();
             $table->string('title')->unique();
             $table->string('slug')->unique();
-            $table->text('question');
             $table->text('answer');
             $table->timestamps();
         });
@@ -33,6 +32,6 @@ class CreateFaqQuestionsAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('faq_questions_answers');
+        Schema::drop('faq_questions');
     }
 }

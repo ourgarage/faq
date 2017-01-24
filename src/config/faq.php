@@ -7,10 +7,10 @@ return [
         'name' => 'faq',
 
         'menu' => [
-            'url' => 'faq::admin::index',
+            'url' => 'faq::admin::categories::index',
             'caption' => 'FAQ',
             'icon' => 'fa fa-question-circle',
-            'active' => 'faq::admin::index',
+            'active' => 'faq::admin::categories::index',
             'subitems' => [
                 [
                     'url' => 'faq::admin::categories::index',
@@ -21,7 +21,7 @@ return [
 
                 [
                     'url' => 'faq::admin::qa::index',
-                    'caption' => 'Questions-Answers',
+                    'caption' => 'Questions',
                     'icon' => 'fa fa-list',
                     'active' => 'faq::admin::qa::index'
                 ]

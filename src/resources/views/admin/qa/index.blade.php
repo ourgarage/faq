@@ -11,7 +11,7 @@
 @section('body')
     <div class="faq-index">
 
-        @if(!$questionsAnswers->isEmpty())
+        @if(!$faqs->isEmpty())
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -24,22 +24,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($questionsAnswers as $questionAnswer)
+                    @foreach($faqs as $faq)
                         <tr>
-                            <th>{{ $questionAnswer->id }}</th>
-                            <td><a href="#" target="_blank">{{ $questionAnswer->slug }}</a>
+                            <th>{{ $faq->id }}</th>
+                            <td><a href="{{ route('faq::front::qa', ['slug' => $faq->slug]) }}"
+                                   target="_blank">{{ $faq->slug }}</a>
                             </td>
-                            <td>{{ $questionAnswer->title }}</td>
-                            <td>{{ df($questionAnswer->created_at) }}</td>
+                            <td>{{ $faq->title }}</td>
+                            <td>{{ df($faq->created_at) }}</td>
                             <td class="for-form-inline">
-                                <form action="{{ route('faq::admin::qa::changeStatus', ['id' => $questionAnswer->id,
-                                    'status' => $questionAnswer->status == \Ourgarage\Faq\Models\QuestionAnswer::STATUS_ACTIVE
-                                    ? \Ourgarage\Faq\Models\QuestionAnswer::STATUS_DISABLED
-                                    : \Ourgarage\Faq\Models\QuestionAnswer::STATUS_ACTIVE
+                                <form action="{{ route('faq::admin::qa::changeStatus', ['id' => $faq->id,
+                                    'status' => $faq->status == \Ourgarage\Faq\Models\Faq::STATUS_ACTIVE
+                                    ? \Ourgarage\Faq\Models\Faq::STATUS_DISABLED
+                                    : \Ourgarage\Faq\Models\Faq::STATUS_ACTIVE
                                 ]) }}"
                                       method="POST">
                                     {{ csrf_field() }}
-                                    @if($questionAnswer->status == \Ourgarage\Faq\Models\QuestionAnswer::STATUS_ACTIVE)
+                                    @if($faq->status == \Ourgarage\Faq\Models\Faq::STATUS_ACTIVE)
                                         <button type="submit"
                                                 data-confirm="@lang('faq::faq.qa.popup.deactivate')"
                                                 class="btn btn-xs btn-success" data-toggle="tooltip"
@@ -55,13 +56,13 @@
                                         </button>
                                     @endif
                                 </form>
-                                <a href="{{ route('faq::admin::qa::edit', ['id' => $questionAnswer->id]) }}"
+                                <a href="{{ route('faq::admin::qa::edit', ['id' => $faq->id]) }}"
                                    class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top"
                                    title="{{ trans('users.tooltip.edit') }}">
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                <form action="{{ route('faq::admin::qa::destroy', ['id' => $questionAnswer->id]) }}"
+                                <form action="{{ route('faq::admin::qa::destroy', ['id' => $faq->id]) }}"
                                       method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
@@ -77,7 +78,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                {!! $questionsAnswers->render() !!}
+                {!! $faqs->render() !!}
             </div>
         @else
             <div class="no-results text-center">

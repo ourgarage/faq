@@ -1,7 +1,7 @@
 @extends('admin.main')
 
 @section('body-title')
-    {{ isset($questionAnswer) ? trans('faq::faq.qa.edit') : trans('faq::faq.qa.add') }}
+    {{ isset($faq) ? trans('faq::faq.qa.edit') : trans('faq::faq.qa.add') }}
 @endsection
 
 @section('body')
@@ -13,11 +13,11 @@
 
             <div class="faq-box-body">
                 <form class="form-horizontal"
-                      action="{{ isset($questionAnswer)
-                  ? route('faq::admin::qa::store', ['id' => $questionAnswer->id])
+                      action="{{ isset($faq)
+                  ? route('faq::admin::qa::store', ['id' => $faq->id])
                   : route('faq::admin::qa::store') }}" method="POST">
 
-                    @if(isset($questionAnswer))
+                    @if(isset($faq))
                         {{ method_field('PUT') }}
                     @endif
 
@@ -27,7 +27,7 @@
                         <label class="col-md-2">{{ trans('faq::faq.qa.table.title') }} : *</label>
                         <div class="col-md-8">
                             <input type="text" name="title" class="form-control"
-                                   value="{{ isset($questionAnswer) ? old('title', $questionAnswer->title) : old('title') }}">
+                                   value="{{ isset($faq) ? old('title', $faq->title) : old('title') }}">
                             <span class="glyphicon glyphicon-header form-control-feedback"></span>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <label class="col-md-2">{{ trans('faq::faq.qa.table.uri') }} : *</label>
                         <div class="col-md-8">
                             <input type="text" name="slug" class="form-control"
-                                   value="{{ isset($questionAnswer) ? old('slug', $questionAnswer->slug) : old('slug') }}">
+                                   value="{{ isset($faq) ? old('slug', $faq->slug) : old('slug') }}">
                             <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
                         </div>
                     </div>
@@ -47,9 +47,9 @@
                             <select name="category" class="form-control">
                                 <option value="">{{ trans('faq::faq.qa.table.select-category') }}</option>
                                 @foreach($categories as $category)
-                                    @if(isset($questionAnswer))
+                                    @if(isset($faq))
                                         <option value="{{ $category->id }}"
-                                                {{ old('category', $questionAnswer->faq_category_id) == $category->id ? 'selected' : ''}}>
+                                                {{ old('category', $faq->faq_category_id) == $category->id ? 'selected' : ''}}>
                                             {{ $category->title }}
                                         </option>
                                     @else
@@ -64,25 +64,16 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <label class="col-md-2">{{ trans('faq::faq.qa.table.question') }} : *</label>
-                        <div class="col-md-8">
-                            <textarea name="question" class="form-control editor">
-                                {{ isset($questionAnswer) ? old('question', $questionAnswer->question) : old('question') }}
-                            </textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group has-feedback">
                         <label class="col-md-2">{{ trans('faq::faq.qa.table.answer') }} : *</label>
                         <div class="col-md-8">
                             <textarea name="answer" class="form-control editor">
-                                {{ isset($questionAnswer) ? old('answer', $questionAnswer->answer) : old('answer') }}
+                                {{ isset($faq) ? old('answer', $faq->answer) : old('answer') }}
                             </textarea>
                         </div>
                     </div>
 
                     <button type="submit"
-                            class="btn btn-primary btn-flat">{{ isset($questionAnswer)
+                            class="btn btn-primary btn-flat">{{ isset($faq)
                         ? trans('faq::faq.button.save')
                         : trans('faq::faq.button.create') }}</button>
                 </form>

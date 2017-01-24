@@ -2,7 +2,7 @@
 
 namespace Ourgarage\Faq\DTO;
 
-class FaqQuestionAnswerDTO
+class FaqDTO
 {
     /**
      * @var int
@@ -27,11 +27,6 @@ class FaqQuestionAnswerDTO
     /**
      * @var string
      */
-    private $question;
-
-    /**
-     * @var string
-     */
     private $answer;
 
     /**
@@ -44,11 +39,13 @@ class FaqQuestionAnswerDTO
 
     /**
      * @param int $id
-     * @return FaqQuestionAnswerDTO
+     *
+     * @return FaqDTO
      */
     public function setId($id)
     {
         $this->id = $id;
+        
         return $this;
     }
 
@@ -63,11 +60,13 @@ class FaqQuestionAnswerDTO
 
     /**
      * @param int $category
-     * @return FaqQuestionAnswerDTO
+     *
+     * @return FaqDTO
      */
     public function setCategory($category)
     {
         $this->category = $category;
+
         return $this;
     }
 
@@ -81,11 +80,13 @@ class FaqQuestionAnswerDTO
 
     /**
      * @param string $title
-     * @return FaqQuestionAnswerDTO
+     *
+     * @return FaqDTO
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -99,29 +100,13 @@ class FaqQuestionAnswerDTO
 
     /**
      * @param string $slug
-     * @return FaqQuestionAnswerDTO
+     *
+     * @return FaqDTO
      */
     public function setSlug($slug)
     {
         $this->slug = $slug;
-        return $this;
-    }
 
-    /**
-     * @return string
-     */
-    public function getQuestion()
-    {
-        return $this->question;
-    }
-
-    /**
-     * @param string $question
-     * @return FaqQuestionAnswerDTO
-     */
-    public function setQuestion($question)
-    {
-        $this->question = $question;
         return $this;
     }
 
@@ -135,11 +120,13 @@ class FaqQuestionAnswerDTO
 
     /**
      * @param string $answer
-     * @return FaqQuestionAnswerDTO
+     *
+     * @return FaqDTO
      */
     public function setAnswer($answer)
     {
         $this->answer = $answer;
+
         return $this;
     }
 

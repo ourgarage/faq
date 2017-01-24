@@ -29,6 +29,7 @@ class FaqCategoryDTO
 
     /**
      * @param int $id
+     *
      * @return FaqCategoryDTO
      */
     public function setId($id)
@@ -48,6 +49,7 @@ class FaqCategoryDTO
 
     /**
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -67,6 +69,7 @@ class FaqCategoryDTO
 
     /**
      * @param string $slug
+     *
      * @return $this
      */
     public function setSlug($slug)

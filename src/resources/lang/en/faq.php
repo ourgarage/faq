@@ -29,15 +29,15 @@ return [
 
     'qa' => [
         'title' => 'All questions and answers',
-        'no-qa' => 'You have no questions-answers',
+        'no-qa' => 'You have no questions',
         'must-category' => 'First, you must create at least one category',
-        'add' => 'Create question-answer',
-        'edit' => 'Edit question-answer',
+        'add' => 'Create question',
+        'edit' => 'Edit question',
 
         'popup' => [
-            'activate' => 'Do you want to activate this question-answer?',
-            'deactivate' => 'Do you want to deactivate this question-answer?',
-            'delete' => 'Do you want to delete this question-answer?'
+            'activate' => 'Do you want to activate this question?',
+            'deactivate' => 'Do you want to deactivate this question?',
+            'delete' => 'Do you want to delete this question?'
         ],
 
         'table' => [
@@ -80,11 +80,19 @@ return [
             ],
 
             'qa' => [
-                'create' => 'Question-answer has been successfully created',
-                'update' => 'Question-answer has been successfully updated',
-                'delete' => 'Question-answer has been successfully deleted',
-                'status' => 'Status of question-answer has been successfully changed'
+                'create' => 'Question has been successfully created',
+                'update' => 'Question has been successfully updated',
+                'delete' => 'Question has been successfully deleted',
+                'status' => 'Status of question has been successfully changed'
             ]
         ]
+    ],
+
+    'front' => [
+        'index-head' => 'Frequently asked Questions',
+        'no-qa' => 'You have no FAQ',
+        'question' => 'Question',
+        'answer' => 'Answer',
+        'back' => 'Back to home FAQ'
     ]
 ];
