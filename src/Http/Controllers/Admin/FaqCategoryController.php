@@ -15,6 +15,7 @@ class FaqCategoryController extends Controller
      * List all categories of FAQ
      *
      * @param FaqPresenter $presenter
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(FaqPresenter $presenter)
@@ -46,6 +47,7 @@ class FaqCategoryController extends Controller
      * @param FaqCategoryRequest $request
      * @param FaqPresenter $presenter
      * @param null|int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(FaqCategoryRequest $request, FaqPresenter $presenter, $id = null)
@@ -67,6 +69,7 @@ class FaqCategoryController extends Controller
      *
      * @param FaqPresenter $presenter
      * @param int $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(FaqPresenter $presenter, $id)
@@ -85,6 +88,7 @@ class FaqCategoryController extends Controller
      * @param FaqPresenter $presenter
      * @param int $id
      * @param int $status
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function changeStatus(FaqPresenter $presenter, $id, $status)
@@ -101,6 +105,7 @@ class FaqCategoryController extends Controller
      *
      * @param FaqPresenter $presenter
      * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(FaqPresenter $presenter, $id)

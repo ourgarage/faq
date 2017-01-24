@@ -14,6 +14,7 @@ class FaqController extends Controller
      * Get all questions & answers
      *
      * @param FaqPresenter $presenter
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(FaqPresenter $presenter)
@@ -45,6 +46,7 @@ class FaqController extends Controller
      * @param FaqRequest $request
      * @param FaqPresenter $presenter
      * @param null|int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(FaqRequest $request, FaqPresenter $presenter, $id = null)
@@ -68,6 +70,7 @@ class FaqController extends Controller
      *
      * @param FaqPresenter $presenter
      * @param int $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(FaqPresenter $presenter, $id)
@@ -86,6 +89,7 @@ class FaqController extends Controller
      * @param FaqPresenter $presenter
      * @param int $id
      * @param int $status
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function changeStatus(FaqPresenter $presenter, $id, $status)
@@ -97,6 +101,14 @@ class FaqController extends Controller
         return redirect()->route('faq::admin::qa::index');
     }
 
+    /**
+     * Delete FAQ from database
+     *
+     * @param FaqPresenter $presenter
+     * @param int $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(FaqPresenter $presenter, $id)
     {
         $presenter->deleteFaq($id);

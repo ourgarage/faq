@@ -39,6 +39,7 @@ class FaqDTO
 
     /**
      * @param int $id
+     *
      * @return FaqDTO
      */
     public function setId($id)
@@ -58,11 +59,13 @@ class FaqDTO
 
     /**
      * @param int $category
+     *
      * @return FaqDTO
      */
     public function setCategory($category)
     {
         $this->category = $category;
+
         return $this;
     }
 
@@ -76,11 +79,13 @@ class FaqDTO
 
     /**
      * @param string $title
+     *
      * @return FaqDTO
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
@@ -94,11 +99,13 @@ class FaqDTO
 
     /**
      * @param string $slug
+     *
      * @return FaqDTO
      */
     public function setSlug($slug)
     {
         $this->slug = $slug;
+
         return $this;
     }
 
@@ -112,11 +119,13 @@ class FaqDTO
 
     /**
      * @param string $answer
+     *
      * @return FaqDTO
      */
     public function setAnswer($answer)
     {
         $this->answer = $answer;
+
         return $this;
     }
 
