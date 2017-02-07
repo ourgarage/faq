@@ -17,8 +17,8 @@
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th>{{ trans('faq::faq.qa.table.uri') }}</th>
                         <th>{{ trans('faq::faq.qa.table.title') }}</th>
+                        <th>{{ trans('faq::faq.qa.table.category') }}</th>
                         <th>{{ trans('faq::faq.qa.table.created') }}</th>
                         <th>{{ trans('faq::faq.qa.table.options') }}</th>
                     </tr>
@@ -27,10 +27,8 @@
                     @foreach($faqs as $faq)
                         <tr>
                             <th>{{ $faq->id }}</th>
-                            <td><a href="{{ route('faq::front::qa', ['slug' => $faq->slug]) }}"
-                                   target="_blank">{{ $faq->slug }}</a>
-                            </td>
                             <td>{{ $faq->title }}</td>
+                            <td>{{ $faq->category->title }}</td>
                             <td>{{ df($faq->created_at) }}</td>
                             <td class="for-form-inline">
                                 <form action="{{ route('faq::admin::qa::changeStatus', ['id' => $faq->id,

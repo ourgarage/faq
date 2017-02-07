@@ -26,7 +26,6 @@ class FaqPresenter
      * Create or update category of FAQ
      *
      * @param FaqCategoryDTO $dto
-     *
      * @return bool
      */
     public function createOrUpdateCategory(FaqCategoryDTO $dto)
@@ -44,7 +43,6 @@ class FaqPresenter
      * Get selected category
      *
      * @param int $id
-     *
      * @return object
      */
     public function getByCategory($id)
@@ -57,7 +55,6 @@ class FaqPresenter
      *
      * @param int $id
      * @param int $status
-     *
      * @return bool
      */
     public function updateStatusCategory($id, $status)
@@ -74,7 +71,6 @@ class FaqPresenter
      * Delete category of FAQ
      *
      * @param int $id
-     *
      * @return bool
      */
     public function deleteCategory($id)
@@ -98,7 +94,6 @@ class FaqPresenter
      * Create or update FAQ
      *
      * @param FaqDTO $dto
-     *
      * @return bool
      */
     public function createOrUpdateFaq(FaqDTO $dto)
@@ -130,7 +125,6 @@ class FaqPresenter
      *
      * @param int $id
      * @param int $status
-     *
      * @return bool
      */
     public function updateStatusFaq($id, $status)
@@ -147,7 +141,6 @@ class FaqPresenter
      * Delete FAQ
      *
      * @param int $id
-     *
      * @return bool
      */
     public function deleteFaq($id)

@@ -14,7 +14,12 @@ class Category extends Model
     protected $fillable = [
         'status', 'title', 'slug'
     ];
-
+    
+    /**
+     * Get questions of category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function faq()
     {
         return $this->hasMany('Ourgarage\Faq\Models\Faq', 'faq_category_id');
