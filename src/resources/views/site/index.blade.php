@@ -7,23 +7,15 @@
                 <h3>{{ trans('faq::faq.front.index-head') }}</h3>
             </div>
             <div class="panel-body">
-                @if(!$categories->isEmpty())
+                @if(!empty($categories))
 
-                    <form id="main" v-cloak>
-
-                        <div class="bar">
-                            <input type="text" v-model="searchString" placeholder="Enter your search terms"/>
-                        </div>
-
-                        <ul>
-                            <li v-for="i in articles | searchFor searchString">
-                                <a v-bind:href="i.url"><img v-bind:src="i.image"/></a>
-                                <p>@{{i.title}}</p>
-                            </li>
-                        </ul>
-                    </form>
-
-                    @foreach($categories as $category)
+                    <ul id="example-1">
+                        <li v-for="(i, pr) in items">
+                            @{{ i.faq }}
+                        </li>
+                    </ul>
+                {{-- dd($categories) }}
+                    {{--@foreach($categories as $category)
                         @if(!$category->faq->isEmpty())
                             <div class="panel panel-default">
                                 <div class="panel-heading">{{ $category->title }}</div>
@@ -32,7 +24,7 @@
                                 </div>
                             </div>
                         @endif
-                    @endforeach
+                    @endforeach--}}
 
                 @else
                     {{ trans('faq::faq.front.no-qa') }}
@@ -47,4 +39,12 @@
     <script src='/libs/bootstrap/js/bootstrap.min.js'></script>
     <script src="/libs/vue/vue.min.js"></script>
     <script src="/packages/faq/js/filter.js"></script>
+    <script>
+        var example1 = new Vue({
+            el: '#example-1',
+            data: {
+                items: {!! $categories !!}
+            }
+        })
+    </script>
 @endsection
