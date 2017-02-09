@@ -14,13 +14,13 @@ class FaqController extends Controller
      * @param FaqPresenter $presenter
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(FaqPresenter $presenter)
     {
-        //$categories = $presenter->getActiveCategories()->toJson();
+        $categories = $presenter->getActiveCategories()->toJson();
 
-        //return view('faq::site.index', compact('categories'));
+        return view('faq::site.index', compact('categories'));
     
-        return view('faq::site.index');
+        //return view('faq::site.index');
     }
     
     /**
