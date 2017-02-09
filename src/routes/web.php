@@ -43,5 +43,6 @@ Route::group(['middleware' => 'web'], function () {
      */
     Route::group(['prefix' => '/faq', 'namespace' => 'Ourgarage\Faq\Http\Controllers'], function () {
         Route::get('/', 'FaqController@index')->name('faq::front::index');
+        Route::get('/get-data', 'FaqController@getCategoriesToJson');
     });
 });

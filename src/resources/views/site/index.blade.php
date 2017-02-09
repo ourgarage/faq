@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="container">
-        <div id="faq-list">
+        <div id="faq-list" v-cloak>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3>{{ trans('faq::faq.front.index-head') }}</h3>
@@ -51,25 +51,30 @@
             el: '#faq-list',
             data: {
                 searchString: "",
-                categories: {!! $categories !!}
+                categories: ctg
             },
             computed: {
+                dataCat: function () {
+                    this.$http.get('/faq/get-data', function(ctg){
+                        this.$set('ctg', ctg)
+                    });
+                },
 
                 filteredCategory: function () {
                     var categories_array = this.categories,
                         searchString = this.searchString;
 
-                    if(!searchString){
+                    if (!searchString) {
                         return categories_array;
                     }
 
                     searchString = searchString.trim().toLowerCase();
 
-                    categories_array = categories_array.filter(function(item){
-                        if(item.title.toLowerCase().indexOf(searchString) !== -1){
+                    categories_array = categories_array.filter(function (item) {
+                        if (item.title.toLowerCase().indexOf(searchString) !== -1) {
                             return item;
                         }
-                    })
+                    });
 
                     return categories_array;
                 }
