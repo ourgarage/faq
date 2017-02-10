@@ -53,9 +53,16 @@
             el: '#faq',
             data: {
                 searchString: "",
-                categories: {!! $categories !!}
+                categories: {}
             },
 
+            methods: {
+                getData: function() {
+                    this.$http.get('/faq/get-data', function(data) {
+                        this.$set('categories', data)
+                    })
+                }
+            },
             computed: {
 
                 filteredCategory: function () {
