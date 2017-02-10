@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="container">
-        <div id="faq-list" v-cloak>
+        <div id="faq" v-cloak>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3>{{ trans('faq::faq.front.index-head') }}</h3>
@@ -39,20 +39,23 @@
             </div>
         </div>
     </div>
+
+    @include('site.footer')
 @endsection
 
 @section('js')
     <script src='/libs/jquery/jquery.min.js'></script>
     <script src='/libs/bootstrap/js/bootstrap.min.js'></script>
     <script src="/libs/vue/vue.min.js"></script>
-    <script src="/packages/faq/js/filter.js"></script>
+    {{--<script src="/packages/faq/js/filter.js"></script>--}}
     <script>
         var listFaq = new Vue({
-            el: '#faq-list',
+            el: '#faq',
             data: {
                 searchString: "",
                 categories: {!! $categories !!}
             },
+
             computed: {
 
                 filteredCategory: function () {
