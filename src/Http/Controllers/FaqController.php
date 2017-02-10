@@ -24,15 +24,4 @@ class FaqController extends Controller
     
         return view('faq::site.index');
     }
-    
-    /**
-     * Get all data to Vue.js
-     *
-     * @param FaqPresenter $presenter
-     * @return string
-     */
-    public function getCategoriesToJson(FaqPresenter $presenter)
-    {
-        return $presenter->getActiveCategories()->toJson();
-    }
 }
