@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    @include('site.footer')
+    {{-- @include('site.footer') --}}
 @endsection
 
 @section('js')
@@ -49,41 +49,67 @@
     <script src="/libs/vue/vue.min.js"></script>
     {{--<script src="/packages/faq/js/filter.js"></script>--}}
     <script>
+        Vue.config.debug = true;
+        var apiURL = '/faq/get-data';
+
         var listFaq = new Vue({
-            el: '#faq',
-            data: {
-                searchString: "",
-                categories: {}
-            },
+                el: '#faq',
 
-            methods: {
-                getData: function() {
-                    this.$http.get('/faq/get-data', function(data) {
-                        this.$set('categories', data)
-                    })
-                }
-            },
-            computed: {
+                data: {
+                    searchString: "",
+                    categories: {}
+                },
 
-                filteredCategory: function () {
-                    var categories_array = this.categories,
-                        searchString = this.searchString;
+                created: function () {
+                    this.fetchData()
+                },
 
-                    if (!searchString) {
+                methods: {
+                    /*fetchData: function () {
+                        var xhr = new XMLHttpRequest();
+                        var self = this;
+                        xhr.open('GET', apiURL);
+                        xhr.onload = function () {
+                            self.categories = xhr.responseText;
+                            alert(self.categories);
+                            self.$set(self.categories, xhr.responseText);
+                        };
+
+                        //alert(JSON.stringify(self.categories));
+
+                        xhr.send();
+                    }*/
+                     fetchData: function () {
+                        var self = this;
+                        $.get(apiURL, function (data) {
+                            //this.categories = data;
+                            alert(data);
+                            self.$set(self.categories, data);
+                        })
+                    }
+                },
+
+                computed: {
+
+                    filteredCategory: function () {
+                        var categories_array = this.categories,
+                            searchString = this.searchString;
+
+                        if (!searchString) {
+                            return categories_array;
+                        }
+
+                        searchString = searchString.trim().toLowerCase();
+
+                        categories_array = categories_array.filter(function (item) {
+                            if (item.title.toLowerCase().indexOf(searchString) !== -1) {
+                                return item;
+                            }
+                        });
+
                         return categories_array;
                     }
-
-                    searchString = searchString.trim().toLowerCase();
-
-                    categories_array = categories_array.filter(function (item) {
-                        if (item.title.toLowerCase().indexOf(searchString) !== -1) {
-                            return item;
-                        }
-                    });
-
-                    return categories_array;
                 }
-            }
-        });
+            });
     </script>
 @endsection

@@ -16,8 +16,8 @@ class FaqController extends Controller
      */
     public function index(FaqPresenter $presenter)
     {
-        $categories = $presenter->getActiveCategories()->toJson();
-
+        //$categories = $presenter->getActiveCategories()->toJson();
+        $categories = $presenter->getActiveCategories();
         //return view('faq::site.index', compact('categories'));
         
         JavaScript::put([
