@@ -39,8 +39,6 @@
             </div>
         </div>
     </div>
-
-    @include('site.footer')
 @endsection
 
 @section('js')

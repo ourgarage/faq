@@ -157,6 +157,9 @@ class FaqPresenter
      */
     public function getActiveCategories()
     {
-        return Category::select(['id', 'title'])->where('status', Category::STATUS_ACTIVE)->has('faq')->with('faq')->get();
+        return Category::where('status', Category::STATUS_ACTIVE)
+            ->has('faq')->with(['faq' => function ($query) {
+                $query->where('status', Faq::STATUS_ACTIVE);
+            }])->get();
     }
 }
