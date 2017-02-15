@@ -35,7 +35,7 @@ var listFaq = new Vue({
             });
 
             result_array.push({
-                title: 'Search results',
+                title: engin.result_search,
                 faq: faq_array
             });
 

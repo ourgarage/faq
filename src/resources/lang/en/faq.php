@@ -93,6 +93,7 @@ return [
         'no-qa' => 'You have no FAQ',
         'question' => 'Question',
         'answer' => 'Answer',
-        'back' => 'Back to home FAQ'
+        'back' => 'Back to home FAQ',
+        'searching' => 'Search results'
     ]
 ];

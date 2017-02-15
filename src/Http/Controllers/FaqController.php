@@ -3,8 +3,8 @@
 namespace Ourgarage\Faq\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Ourgarage\Faq\Presenters\FaqPresenter;
 use JavaScript;
+use Ourgarage\Faq\Presenters\FaqPresenter;
 
 class FaqController extends Controller
 {
@@ -19,9 +19,10 @@ class FaqController extends Controller
         $categories = $presenter->getActiveCategories();
         
         JavaScript::put([
-           'categories' => $categories
+            'categories' => $categories,
+            'result_search' => trans('faq::faq.front.searching')
         ]);
-    
+        
         return view('faq::site.index');
     }
 }
