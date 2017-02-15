@@ -9,7 +9,8 @@
                 </div>
                 <div class="panel-body">
 
-                    <input type="text" v-model="searchString" class="form-control"/>
+                    <input type="text" v-model="searchString" class="form-control"
+                           placeholder="{{ trans('faq::faq.front.search-placeholder') }}"/>
 
                     <div v-for="category in filteredCategory" class="panel panel-default">
                         <div class="panel-heading">@{{ category.title }}</div>

@@ -94,6 +94,7 @@ return [
         'question' => 'Question',
         'answer' => 'Answer',
         'back' => 'Back to home FAQ',
-        'searching' => 'Search results'
+        'searching' => 'Search results',
+        'search-placeholder' => 'Enter text here...'
     ]
 ];

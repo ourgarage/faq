@@ -87,6 +87,7 @@ return [
         'question' => 'Вопрос',
         'answer' => 'Ответ',
         'back' => 'Назад на главную FAQ',
-        'searching' => 'Результаты поиска'
+        'searching' => 'Результаты поиска',
+        'search-placeholder' => 'Введите текст здесь...'
     ]
 ];
