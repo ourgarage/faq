@@ -17,19 +17,29 @@ var listFaq = new Vue({
 
             searchString = searchString.trim().toLowerCase();
 
-            var new_array = [];
+            var faq_array = [];
+            var result_array = [];
 
             $.each(categories_array, function (index, value) {
                 $.each(value.faq, function (i, item) {
                     if (item.title.toLowerCase().indexOf(searchString) !== -1 || item.answer.toLowerCase().indexOf(searchString) !== -1) {
-                        if (new_array.indexOf(value) === -1) {
-                            new_array.push(value);
+                        if (faq_array.indexOf(item) === -1) {
+                            faq_array.push({
+                                id: item.id,
+                                title: item.title,
+                                answer: item.answer
+                            })
                         }
                     }
                 });
             });
 
-            return new_array;
+            result_array.push({
+                title: 'Search results',
+                faq: faq_array
+            });
+
+            return result_array;
         }
     }
 });
