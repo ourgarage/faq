@@ -17,13 +17,19 @@ var listFaq = new Vue({
 
             searchString = searchString.trim().toLowerCase();
 
-            categories_array = categories_array.filter(function (item) {
-                if (item.title.toLowerCase().indexOf(searchString) !== -1) {
-                    return item;
-                }
+            var new_array = [];
+
+            $.each(categories_array, function (index, value) {
+                $.each(value.faq, function (i, item) {
+                    if (item.title.toLowerCase().indexOf(searchString) !== -1 || item.answer.toLowerCase().indexOf(searchString) !== -1) {
+                        if (new_array.indexOf(value) === -1) {
+                            new_array.push(value);
+                        }
+                    }
+                });
             });
 
-            return categories_array;
+            return new_array;
         }
     }
 });
