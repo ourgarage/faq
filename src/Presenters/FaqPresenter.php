@@ -87,7 +87,7 @@ class FaqPresenter
      */
     public function getAllFaqs()
     {
-        return Faq::paginate(FaqPresenter::PER_PAGE);
+        return Faq::with('category')->paginate(FaqPresenter::PER_PAGE);
     }
 
     /**
