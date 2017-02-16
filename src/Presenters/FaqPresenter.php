@@ -87,7 +87,7 @@ class FaqPresenter
      */
     public function getAllFaqs()
     {
-        return Faq::paginate(FaqPresenter::PER_PAGE);
+        return Faq::with('category')->paginate(FaqPresenter::PER_PAGE);
     }
 
     /**
@@ -157,6 +157,9 @@ class FaqPresenter
      */
     public function getActiveCategories()
     {
-        return Category::where('status', Category::STATUS_ACTIVE)->paginate(FaqPresenter::PER_PAGE);
+        return Category::where('status', Category::STATUS_ACTIVE)
+            ->has('faq')->with(['faq' => function ($query) {
+                $query->where('status', Faq::STATUS_ACTIVE);
+            }])->get();
     }
 }
