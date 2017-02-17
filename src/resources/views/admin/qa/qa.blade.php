@@ -63,19 +63,33 @@
                         </div>
                     </div>
 
+                    <h4>{{ trans('faq::faq.qa.content') }} : </h4>
+
                     <div class="form-group has-feedback">
-                        <label class="col-md-2">{{ trans('faq::faq.qa.table.answer') }} : *</label>
-                        <div class="col-md-8">
-                            <textarea name="answer" class="form-control editor">
+                        <div class="col-md-10">
+                            <textarea id="answer" name="answer" class="form-control" rows="15">
                                 {{ isset($faq) ? old('answer', $faq->answer) : old('answer') }}
                             </textarea>
                         </div>
                     </div>
 
-                    <button type="submit"
-                            class="btn btn-primary btn-flat">{{ isset($faq)
-                        ? trans('faq::faq.button.save')
-                        : trans('faq::faq.button.create') }}</button>
+                    <div class="form-group has-feedback">
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary btn-flat">
+                                {{ isset($faq)
+                                ? trans('faq::faq.button.save')
+                                : trans('faq::faq.button.create') }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <div class="col-md-2">
+                            <a href="{{ url()->previous() }}" class="btn btn-default btn-flat">
+                                <i class="fa fa-arrow-left"></i> {{ trans('faq::faq.button.back') }}
+                            </a>
+                        </div>
+                    </div>
                 </form>
 
             </div>
@@ -98,5 +112,5 @@
 
 @section('js')
     @inject('connect', 'App\Http\ViewConnectors\EditorConnector')
-    {!! $connect->connect('.editor', App::getLocale(), null, App\Http\ViewConnectors\EditorConnector::MODE_FULL, true) !!}
+    {!! $connect->connect('#answer', App::getLocale(), null, App\Http\ViewConnectors\EditorConnector::MODE_FULL, true) !!}
 @endsection

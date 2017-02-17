@@ -39,10 +39,23 @@
                     </div>
                 </div>
 
-                <button type="submit"
-                        class="btn btn-primary btn-flat">{{ isset($category)
-                        ? trans('faq::faq.button.save')
-                        : trans('faq::faq.button.create') }}</button>
+                <div class="form-group has-feedback">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary btn-flat">
+                            {{ isset($category)
+                            ? trans('faq::faq.button.save')
+                            : trans('faq::faq.button.create') }}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <div class="col-md-2">
+                        <a href="{{ url()->previous() }}" class="btn btn-default btn-flat">
+                            <i class="fa fa-arrow-left"></i> {{ trans('faq::faq.button.back') }}
+                        </a>
+                    </div>
+                </div>
             </form>
 
         </div>

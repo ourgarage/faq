@@ -31,11 +31,11 @@ class FaqRequest extends FormRequest
             'answer' => 'required',
             'title' => [
                 'required',
-                Rule::unique('faq_questions_answers')->ignore($this->route('id')),
+                Rule::unique('faq_questions')->ignore($this->route('id')),
             ],
             'slug' => [
                 'required',
-                Rule::unique('faq_questions_answers')->ignore($this->route('id')),
+                Rule::unique('faq_questions')->ignore($this->route('id')),
             ],
         ];
     }

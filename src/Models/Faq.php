@@ -9,7 +9,7 @@ class Faq extends Model
     const STATUS_ACTIVE = 1;
     const STATUS_DISABLED = 0;
 
-    protected $table = 'faq_questions_answers';
+    protected $table = 'faq_questions';
 
     protected $fillable = [
         'faq_category_id', 'status', 'title', 'slug', 'answer'
