@@ -33,6 +33,7 @@ return [
         'must-category' => 'First, you must create at least one category',
         'add' => 'Create question',
         'edit' => 'Edit question',
+        'content' => 'Content of answer',
 
         'popup' => [
             'activate' => 'Do you want to activate this question?',
@@ -54,7 +55,8 @@ return [
 
     'button' => [
         'create' => 'Create',
-        'save' => 'Save'
+        'save' => 'Save',
+        'back' => 'Back'
     ],
 
     'notifications' => [
